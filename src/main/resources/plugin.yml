@@ -1,0 +1,5 @@
+main: dev.panda.combofly.ComboFly
+name: PandaFly
+version: ${project.version}
+authors: ["KenAlesk", "TulioTriste", "Risas"]
+load: POSTWORLD

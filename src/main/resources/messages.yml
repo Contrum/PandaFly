@@ -1,0 +1,194 @@
+HELP:
+  - "&7&m-------------------------"
+  - "&c&lHelp Commands"
+  - "&c/killstreak &7- Check out the rewards you can earn after having a killstreak."
+  - "&c/stats &7- Check your or another player's statistics."
+  - ""
+  - "&c» &fDiscord: &c{discord}"
+  - "&c» &7Store: &c{store}"
+  - "&c» &7Teamspeak: &c{teamspeak}"
+  - "&c» &7Twitter: &c{twitter}"
+  - "&c» &7Website: &c{website}"
+  - ""
+  - "&c» /request <message>"
+  - "&c» /report <player> <reason> "
+  - "&7&m-------------------------"
+#VARIABLES: {player} {suffix} {prefix}
+CHAT:
+  TOGGLE: true
+  FORMAT: "&8(&c{kills}&8) {prefix}&r{player}&7: &f"
+  FROZEN: "&7(&cFreeze&7) &c{player}&7: &f{message}"
+  STAFFCHAT: "&7(&bStaffChat&7) &b{staff}&7: &f{message}"
+
+KOTH:
+  CONTEST:
+    - "&7[&6KoTH&7] &e{koth}&6 is being contested. &7(&9{time}&7)"
+  WINNING:
+    - "&7[&6KoTH&7] &e{koth}&6 has been captured by &e{winner}&6."
+  KNOCKED:
+    - "&7[&6KoTH&7] &6Control of &e{koth}&6 lost. &7(&9{time}&7)"
+
+FREEZE:
+  FROZEN:
+    - "&7&m-----------------------------"
+    - ""
+    - "&4&lYou has been frozen"
+    - "&cIf you logout, you will be banned!"
+    - "&ePlease download Teamspeak and join to"
+    - "&ets.example.net"
+    - ""
+    - "&7&m-----------------------------"
+  FROZEN-SELF: "&cYou can't freeze your self."
+  FROZEN-STAFF: "&cYou can't freeze a staff member."
+  FROZEN-PLAYER: "&6You has been frozen by &c{staff}&6."
+  FROZEN-PLAYER-STAFF: "&c{player} &6has been frozen by &c{staff}&6."
+  FROZEN-PLAYER-DISCONNECT: "&7(&cFreeze&7) &f{player} &cdisconnected while frozen."
+  UNFROZEN-PLAYER: "&6You has been unfrozen by &c{staff}&6."
+  UNFROZEN-PLAYER-STAFF: "&c{player} &6has been unfrozen by &c{staff}&6."
+
+STAFFCHAT:
+  NOT-STAFF: "&cYou're not a staff member."
+  ENABLE: "&6StaffChat has been &aenabled&6."
+  DISABLE: "&6StaffChat has been &cdisabled&6."
+
+STAFFMODE:
+  NOT-STAFF: "&cYou're not a staff member."
+  ENABLE: "&6StaffMode has been &aenabled&6."
+  DISABLE: "&6StaffMode has been &cdisabled&6."
+
+VANISH:
+  NOT-STAFF: "&cYou're not a staff member."
+  ENABLE: "&6StaffMode has been &aenabled&6."
+  DISABLE: "&6StaffMode has been &cdisabled&6."
+
+NETWORK:
+  DISCORD: "&cDiscord&7: &f{discord}"
+  STORE: "&cStore&7: &f{store}"
+  TEAMSPEAK: "&cTeamspeak&7: &f{teamspeak}"
+  TWITTER: "&cTwitter&7: &f{twitter}"
+  WEBSITE: "&cWebsite&7: &f{website}"
+
+BUILD:
+  ENABLE: "&fYour build mode has been &aenabled&e."
+  DISABLE: "&fYour build mode has been &cdisabled&e."
+
+FLY:
+  ENABLE: "&fYour flight mode has been &aenabled&f."
+  DISABLE: "&fYour flight mode has been &cdisabled&f."
+  ENABLE-OTHERS: "&fFlight mode of &c{target} has been &aenabled&f."
+  DISABLE-OTHERS: "&fFlight mode of &c{target} has been &cdisabled&f."
+
+GAMEMODE:
+  CHANGE: "&fYour game mode has changed to &c{gamemode}&f."
+
+TELEPORT:
+  PLAYER: "&fYou have been teleported to &c{target}'s &flocation."
+  NOT-SELF: "&cYou can't teleport yourself."
+
+TPHERE:
+  PLAYER: "&fYou teleported &c{target} &fto your location."
+  NOT-SELF: "&cYou can't teleport yourself."
+  TARGET: "&fYou have been teleported to &c{player}'s &flocation."
+
+TPALL:
+  MESSAGE: "&fYou teleported &cAll players &fto your location."
+
+TPPOSITION:
+  MESSAGE: "&fYou have been teleport to &cnew Location."
+
+TOP:
+  NO-LOCATION: "&cNo highest location found."
+  MESSAGE: "&fTeleported to highest location."
+
+PING:
+  PLAYER: "&fPing of &c{player} &fis &c{ping}&f."
+  TARGET: "&fPing of &c{target} &fis &c{ping}&f."
+
+RENAME:
+  RENAMED: "&fSuccessfully rename to '&c{rename}&f'."
+  NO-ITEM: "&cYou don't have any item in your hand."
+
+SPAWN:
+  COOLDOWN: 10
+  COMBAT: "&7[&4Combat&7] &fYou can't use this in Combat."
+  CANCEL: "&cYou've moved! Teleportation to the spawn has been cancelled."
+  TELEPORTED: "&fSuccessfully teleported to &cSpawn&f."
+
+WARP:
+  PERMISSION-WARP: "&cYou don't have permission to this warp."
+  TELEPORTED: "&fSuccessfully teleported to &c{warp}&f."
+  COMBAT: "&7[&4Combat&7] &fYou can't use this in Combat."
+  NOT-FOUND: "&cWarp '{warp}' not found."
+
+SPEED:
+  FLY:
+    SPEED: "&fSpeed fly set to &c{speed}&f."
+    WRONG-FORMAT: "&cProvide a speed fly 1 - 10."
+    RESTORE: "&aSpeed fly restore."
+  WALK:
+    SPEED: "&fSpeed walk set to &c{speed}&f."
+    WRONG-FORMAT: "&cProvide a speed walk 1 - 10."
+    RESTORE: "&aSpeed walk restore."
+
+BALANCE:
+  PLAYER-BALANCE: "&fBalance of &c{player} &fis &c${balance}&f."
+  TARGET-BALANCE: "&fBalance of &c{target} &fis &c${balance}&f."
+  SET-BALANCE: "&fYou have set &c${amount} &fto &c{target}&f."
+  GIVE-BALANCE: "&fYou have given &c${amount} &fto &c{target}&f."
+  REMOVE-BALANCE: "&fYou have remove &c${amount} &fto &c{target}&f."
+  PAY-SELF: "&cYou can't pay your self."
+  PAY-SEND: "&fYou have sent &c${amount} &fto &c{target}&f."
+  PAY-RECEIVE: "&fYou have received &c${amount} &ffrom &c{player}&f."
+  PAY-ENOUGH-BALANCE:
+    - "&cYou don't have enough balance."
+    - "&fYour balance&7: &c${amount}&f."
+
+AMOUNT:
+  NO-NUMBER: "&cAmount must be a number."
+  NO-POSITIVE: "&cAmount must be positive."
+
+STATS:
+  PLAYER:
+    - "&7&m--------------------"
+    - "&c{player}'s Statistics"
+    - ""
+    - "&fKills&7: &c{kills}"
+    - "&fDeaths&7: &c{deaths}"
+    - "&fMoney&7: &c{balance}"
+    - "&7&m--------------------"
+  OTHERS:
+    - "&7&m--------------------"
+    - "&c{target}'s Statistics"
+    - ""
+    - "&fKills&7: &c{kills}"
+    - "&fDeaths&7: &c{deaths}"
+    - "&fMoney&7: &c{balance}"
+    - "&7&m--------------------"
+  SET-KILLS: "&fSuccessfully set &c{kills} &fkills to &c{target}&f."
+  GIVE-KILLS: "&fSuccessfully give &c{kills} &fkills to &c{target}&f."
+  REMOVE-KILLS: "&fSuccessfully remove &c{kills} &fkills to &c{target}&f."
+  SET-DEATHS: "&fSuccessfully set &c{deaths} &fdeaths to &c{target}&f."
+  GIVE-DEATHS: "&fSuccessfully give &c{deaths} &fdeaths to &c{target}&f."
+  REMOVE-DEATHS: "&fSuccessfully remove &c{deaths} &fdeaths to &c{target}&f."
+
+KIT:
+  COMBAT: "&7[&4Combat&7] &fYou can't use this in Combat."
+  PERMISSION-KIT: "&cYou don't have permission to use this kit."
+  EQUIP-KIT: "&aSuccessfully equip {kit} Kit."
+  COOLDOWN: "&cKit {kit} for another &c&l{cooldown} &cseconds."
+  NOT-FOUND: "&cKit '{kit}' not found."
+
+ENDERPEARL:
+  COOLDOWN: 16
+  ON-COOLDOWN: "&cEnderpearl cooldown for another &c&l{cooldown} &cseconds."
+
+SHOP:
+  ENOUGH-MONEY: "&cYou don't have enough balance."
+
+PROFILE:
+  NO-PLAYER: "&cThis command can only be executed by the Console."
+
+KILL-MESSAGE:
+  NO-KILLER: "&c{player}&4[{kills}&4] &ehas dead."
+  KILLER-WITH-ITEM: "&c{player}&4[{kills}&4] &ewas killed by &c{killer}&4[{killerKills}&4] &eusing &c{item}"
+  KILLER-NO-ITEM: "&c{player}&4[{kills}&4] &ewas killed by &c{killer}&4[{killerKills}&4]"

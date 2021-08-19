@@ -1,0 +1,62 @@
+PHASE:
+  ENABLE: true
+  ITEM: "COMPASS"
+  DATA: 0
+  NAME: "&6Phase &7(Left/Right Click)"
+  SLOT: 0
+
+INSPECTOR:
+  ENABLE: true
+  ITEM: "BOOK"
+  DATA: 0
+  NAME: "&6Inspector &7(Right Click)"
+  SLOT: 1
+
+WORLD-EDIT:
+  ENABLE: true
+  ITEM: "WOOD_AXE"
+  DATA: 0
+  NAME: "&6WorldEdit &7(Left/Right Click)"
+  SLOT: 2
+
+FREEZE:
+  ENABLE: true
+  ITEM: "PACKED_ICE"
+  DATA: 0
+  NAME: "&6Freeze &7(Right Click)"
+  SLOT: 4
+
+MINER:
+  ENABLE: true
+  ITEM: "DIAMOND_PICKAXE"
+  DATA: 0
+  NAME: "&6Miners &7(Right Click)"
+  SLOT: 5
+
+STAFF-ONLINE:
+  ENABLE: true
+  ITEM: "FEATHER"
+  DATA: 0
+  NAME: "&6Staff Online &7(Right Click)"
+  SLOT: 6
+
+VANISH-ON:
+  ENABLE: true
+  ITEM: "INK_SACK"
+  DATA: 10
+  NAME: "&6Vanish&7: &aON &7(Right Click)"
+  SLOT: 7
+
+VANISH-OFF:
+  ENABLE: true
+  ITEM: "INK_SACK"
+  DATA: 8
+  NAME: "&6Vanish&7: &cOFF &7(Right Click)"
+  SLOT: 7
+
+RANDOM-TELEPORT:
+  ENABLE: true
+  ITEM: "BEACON"
+  DATA: 0
+  NAME: "&6Random Teleport &7(Right Click)"
+  SLOT: 8

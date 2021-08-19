@@ -1,0 +1,46 @@
+TITLE-ANIMATION-ENABLE: true
+TITLE-TASK: 0.3
+TITLE:
+  - "&c&lCombo &7| &fSeason #2"
+  - "&f&lC&c&lombo &7| &fSeason #2"
+  - "&f&lCo&c&lmbo &7| &fSeason #2"
+  - "&f&lCom&c&lbo &7| &fSeason #2"
+  - "&f&lComb&c&lo &7| &fSeason #2"
+  - "&f&lCombo &7| &fSeason #2"
+LINES:
+  - "&7&m---------------------"
+  - "{staffmode}"
+  - "&fKills&7: &c{kills}"
+  - "&fDeaths&7: &c{deaths}"
+  - "&fMoney&7: &c{balance}"
+  - "&4Combat&7: &c{combat}s"
+  - "&3Enderpearl&7: &c{enderpearl}s"
+  - "&aSpawn&7: &c{spawn}s"
+  - "{pandaAbility}"
+  - "{koth}"
+  - "&7&m---------------------"
+
+KOTH:
+  - "&7&m---------------------"
+  - "&9&l{koth}&7: &r{time}"
+  - "&b{capper}"
+
+FOOTER-ENABLE: true
+FOOTER-ANIMATION-ENABLE: true
+FOOTER-TASK: 2.0
+FOOTER:
+  - "&o&7pandacommunity.org"
+  - "&o&9discord.pandacommunity.org"
+  - "&o&b@PandaPlugins"
+
+VARIABLES:
+  STAFFMODE:
+    - "&4&lStaffMode"
+    - "&fVanish&7: &c{vanish}"
+    - "&fOnline&7: &c{online}"
+    - "&fTPS&7: &c{tps}"
+    - "&7&m---------------------"
+
+PANDAABILITY:
+  GLOBAL-COOLDOWN: "%name%&f: %cooldown%"
+  COOLDOWNS: "%name%&f: &c%cooldown%"
