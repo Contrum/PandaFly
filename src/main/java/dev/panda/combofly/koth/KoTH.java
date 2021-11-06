@@ -5,10 +5,10 @@ import com.google.common.collect.Sets;
 import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.koth.cuboid.Cuboid;
 import dev.panda.combofly.koth.task.KoTHRunnable;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.LocationUtil;
 import dev.panda.combofly.utilities.TimeUtil;
-import dev.risas.panda.files.FileConfig;
+import dev.panda.file.FileConfig;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -66,7 +66,7 @@ public class KoTH {
                 ComboFly.get().getMainConfig().getStringList("KOTH-REWARDS").forEach(s ->
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), s.replace("{winner}", this.capPlayer.getName())));
                 ComboFly.get().getMessageConfig().getStringList("KOTH.WINNING").forEach(s ->
-                        Bukkit.broadcastMessage(CC.translate(s.replace("{koth}", this.name)
+                        Bukkit.broadcastMessage(ChatUtil.translate(s.replace("{koth}", this.name)
                                 .replace("{winner}", this.capPlayer.getName()))));
             });
         }
@@ -99,14 +99,14 @@ public class KoTH {
     public void setCappingPlayer(Player player) {
         if (player == null) {
             ComboFly.get().getMessageConfig().getStringList("KOTH.KNOCKED").forEach(s ->
-                Bukkit.broadcastMessage(CC.translate(s.replace("{koth}", this.name)
+                Bukkit.broadcastMessage(ChatUtil.translate(s.replace("{koth}", this.name)
                         .replace("{time}", getTimeLeft()))));
 
             grace = 1000;
             time = System.currentTimeMillis();
         } else {
             ComboFly.get().getMessageConfig().getStringList("KOTH.CONTEST").forEach(s ->
-                    Bukkit.broadcastMessage(CC.translate(s.replace("{koth}", this.name)
+                    Bukkit.broadcastMessage(ChatUtil.translate(s.replace("{koth}", this.name)
                             .replace("{time}" , getTimeLeft()))));
         }
 

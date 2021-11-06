@@ -1,10 +1,10 @@
 package dev.panda.combofly.commands.essentials;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -18,17 +18,17 @@ public class FlyCommand extends BaseCommand {
         
         if (args.length < 1) {
             if (!player.hasPermission("pandafly.fly")) {
-                player.sendMessage(CC.getNoPermission());
+                player.sendMessage(ChatUtil.translate("&cYou don't have permissions"));
                 return;
             }
 
             if (player.getAllowFlight()) {
                 player.setAllowFlight(false);
-                player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("FLY.DISABLE")));
+                player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("FLY.DISABLE")));
             }
             else {
                 player.setAllowFlight(true);
-                player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("FLY.ENABLE")));
+                player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("FLY.ENABLE")));
             }
             return;
         }
@@ -36,23 +36,23 @@ public class FlyCommand extends BaseCommand {
         Player target = Bukkit.getPlayer(args[0]);
 
         if (!player.hasPermission("pandafly.fly.others")) {
-            player.sendMessage(CC.getNoPermission());
+            player.sendMessage(ChatUtil.translate("&cYou don't have permissions"));
             return;
         }
 
         if (target == null) {
-            player.sendMessage(CC.getPlayerNotFound(args[0]));
+            player.sendMessage(ChatUtil.translate("&cPlayer not found."));
             return;
         }
 
         if (target.getAllowFlight()) {
             target.setAllowFlight(false);
-            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("FLY.DISABLE-OTHERS")
+            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("FLY.DISABLE-OTHERS")
                     .replace("{target}", target.getName())));
         }
         else {
             target.setAllowFlight(true);
-            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("FLY.ENABLE-OTHERS")
+            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("FLY.ENABLE-OTHERS")
                     .replace("{target}", target.getName())));
         }
     }

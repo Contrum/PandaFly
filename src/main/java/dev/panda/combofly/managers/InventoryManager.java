@@ -1,7 +1,7 @@
 package dev.panda.combofly.managers;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.Time;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -20,7 +20,7 @@ import java.util.Arrays;
 public class InventoryManager {
 
     public void getEditKit(Player player, String kit) {
-        Inventory inv = Bukkit.createInventory(null, 27, CC.translate("&c&lEditing Kit &7➤ &f&l" + kit));
+        Inventory inv = Bukkit.createInventory(null, 27, ChatUtil.translate("&c&lEditing Kit &7➤ &f&l" + kit));
 
         inv.setItem(10, ComboFly.get().getMenuKitManager().getCooldown(kit));
         inv.setItem(13, ComboFly.get().getMenuKitManager().getGoEditor());
@@ -30,7 +30,7 @@ public class InventoryManager {
     }
 
     public void getKitDefault(Player player) {
-        Inventory inv = Bukkit.createInventory(null, 36, CC.translate("&c&lSelect a Default kit"));
+        Inventory inv = Bukkit.createInventory(null, 36, ChatUtil.translate("&c&lSelect a Default kit"));
         int slotCount = 0;
 
         for (String kit : ComboFly.get().getKitConfig().getConfiguration().getConfigurationSection("KITS").getKeys(false)) {
@@ -45,7 +45,7 @@ public class InventoryManager {
     }
 
     public void getKitsEditor(Player player) {
-        Inventory inv = Bukkit.createInventory(null, 36, CC.translate("&c&lEditor Kits"));
+        Inventory inv = Bukkit.createInventory(null, 36, ChatUtil.translate("&c&lEditor Kits"));
         int slotCount = 0;
 
         for (String kit : ComboFly.get().getKitConfig().getConfiguration().getConfigurationSection("KITS").getKeys(false)) {
@@ -112,8 +112,8 @@ public class InventoryManager {
         SkullMeta meta = (SkullMeta) item.getItemMeta();
 
         meta.setOwner(player.getName());
-        meta.setDisplayName(CC.translate("&6" + player.getName()));
-        meta.setLore(CC.translate(Arrays.asList("", "&7&oClick to teleport to " + player.getName())));
+        meta.setDisplayName(ChatUtil.translate("&6" + player.getName()));
+        meta.setLore(ChatUtil.translate(Arrays.asList("", "&7&oClick to teleport to " + player.getName())));
         item.setItemMeta(meta);
         return item;
     }
@@ -123,8 +123,8 @@ public class InventoryManager {
         SkullMeta meta = (SkullMeta) item.getItemMeta();
 
         meta.setOwner(player.getName());
-        meta.setDisplayName(CC.translate("&6" + player.getName()));
-        meta.setLore(CC.translate(Arrays.asList(
+        meta.setDisplayName(ChatUtil.translate("&6" + player.getName()));
+        meta.setLore(ChatUtil.translate(Arrays.asList(
                 "",
                 "&eHeight&7: &f" + player.getLocation().getBlockY(),
                 "&eDiamonds Mining&7: &f" + player.getStatistic(Statistic.MINE_BLOCK, Material.DIAMOND_ORE),
@@ -138,8 +138,8 @@ public class InventoryManager {
         ItemStack item = new ItemStack(Material.NETHER_STAR, 1);
         ItemMeta meta = item.getItemMeta();
 
-        meta.setDisplayName(CC.translate("&6Utilities"));
-        meta.setLore(CC.translate(Arrays.asList(
+        meta.setDisplayName(ChatUtil.translate("&6Utilities"));
+        meta.setLore(ChatUtil.translate(Arrays.asList(
                 "",
                 "&eGamemode&7: &f" + player.getGameMode(),
                 "&eOperator&7: " + (player.isOp() ? "&aYes" : "&cNo"),
@@ -153,8 +153,8 @@ public class InventoryManager {
         ItemStack item = new ItemStack(Material.COMPASS, 1);
         ItemMeta meta = item.getItemMeta();
 
-        meta.setDisplayName(CC.translate("&6Location"));
-        meta.setLore(CC.translate(Arrays.asList(
+        meta.setDisplayName(ChatUtil.translate("&6Location"));
+        meta.setLore(ChatUtil.translate(Arrays.asList(
                 "",
                 "&eWorld&7: &f" + player.getLocation().getWorld().getName(),
                 "&eX&7: &f" + Math.round(player.getLocation().getX()),
@@ -178,8 +178,8 @@ public class InventoryManager {
             lore.add("&e" + name + " " + (amplifier + 1) + "&7: &f" + Time.formatIntMin(duration / 20));
         }
         lore.add(" ");
-        meta.setDisplayName(CC.translate("&6Active Effects"));
-        meta.setLore(CC.translate(lore));
+        meta.setDisplayName(ChatUtil.translate("&6Active Effects"));
+        meta.setLore(ChatUtil.translate(lore));
         item.setItemMeta(meta);
         return item;
     }
@@ -191,8 +191,8 @@ public class InventoryManager {
         SkullMeta meta = (SkullMeta) item.getItemMeta();
 
         meta.setOwner(player.getName());
-        meta.setDisplayName(CC.translate("&6" + player.getName()));
-        meta.setLore(CC.translate(Arrays.asList(
+        meta.setDisplayName(ChatUtil.translate("&6" + player.getName()));
+        meta.setLore(ChatUtil.translate(Arrays.asList(
                 "",
                 "&eHealth&7: &f" + decimalFormat.format(player.getHealth() / 2),
                 "&eFood&7: &f" + decimalFormat.format(player.getFoodLevel() / 2),
@@ -206,7 +206,7 @@ public class InventoryManager {
         ItemStack item = new ItemStack(Material.REDSTONE, 1);
         ItemMeta meta = item.getItemMeta();
 
-        meta.setDisplayName(CC.translate("&cNone"));
+        meta.setDisplayName(ChatUtil.translate("&cNone"));
         item.setItemMeta(meta);
         return item;
     }
@@ -215,7 +215,7 @@ public class InventoryManager {
         ItemStack item = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 7);
         ItemMeta meta = item.getItemMeta();
 
-        meta.setDisplayName(CC.translate("&7 "));
+        meta.setDisplayName(ChatUtil.translate("&7 "));
         item.setItemMeta(meta);
         return item;
     }

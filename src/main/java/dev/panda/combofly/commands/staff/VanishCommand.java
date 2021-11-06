@@ -1,10 +1,10 @@
 package dev.panda.combofly.commands.staff;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import dev.panda.combofly.utilities.staff.StaffItems;
 import org.bukkit.entity.Player;
 
@@ -16,7 +16,7 @@ public class VanishCommand extends BaseCommand {
         Player player = command.getPlayer();
         
         if (!ComboFly.get().getStaffManager().isStaff(player)) {
-            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("VANISH.NOT-STAFF")));
+            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("VANISH.NOT-STAFF")));
             return;
         }
 
@@ -25,14 +25,14 @@ public class VanishCommand extends BaseCommand {
             if (ComboFly.get().getStaffManager().isStaffMode(player)) {
                 player.getInventory().setItem(ComboFly.get().getStaffitemsConfig().getInt("VANISH-OFF.SLOT"), StaffItems.getVanishOff());
             }
-            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("VANISH.DISABLE")));
+            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("VANISH.DISABLE")));
         }
         else {
             ComboFly.get().getVanishManager().setVanish(player);
             if (ComboFly.get().getStaffManager().isStaffMode(player)) {
                 player.getInventory().setItem(ComboFly.get().getStaffitemsConfig().getInt("VANISH-ON.SLOT"), StaffItems.getVanishOn());
             }
-            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("VANISH.ENABLE")));
+            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("VANISH.ENABLE")));
         }
     }
 }

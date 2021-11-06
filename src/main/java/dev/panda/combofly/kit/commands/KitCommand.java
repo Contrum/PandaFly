@@ -1,10 +1,10 @@
 package dev.panda.combofly.kit.commands;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.entity.Player;
 
 public class KitCommand extends BaseCommand {
@@ -17,24 +17,24 @@ public class KitCommand extends BaseCommand {
         String label = command.getLabel();
         
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&cUsage: /" + label + " <kitName>"));
-            player.sendMessage(CC.translate("&cAvailable Kits: " +
+            player.sendMessage(ChatUtil.translate("&cUsage: /" + label + " <kitName>"));
+            player.sendMessage(ChatUtil.translate("&cAvailable Kits: " +
                     ComboFly.get().getKitManager().getKits()));
             return;
         }
 
-        String kitName = CC.capitalize(args[0]);
+        String kitName = ChatUtil.capitalize(args[0]);
 
         if (ComboFly.get().getKitConfig().getString("KITS." + kitName) == null) {
-            player.sendMessage(CC.getKitNotFound(args[0]));
-            player.sendMessage(CC.translate("&cAvailable Kits: " +
+            player.sendMessage(ChatUtil.translate("&cKit '" + kitName + "' not found."));
+            player.sendMessage(ChatUtil.translate("&cAvailable Kits: " +
                     ComboFly.get().getKitManager().getKits()));
             return;
 
         }
 
         if (ComboFly.get().getCombatManager().hasCooldown(player)) {
-            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("KIT.COMBAT")));
+            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("KIT.COMBAT")));
             return;
         }
 

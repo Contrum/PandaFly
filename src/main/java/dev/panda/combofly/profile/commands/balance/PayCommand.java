@@ -1,10 +1,10 @@
 package dev.panda.combofly.profile.commands.balance;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.Ints;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.CommandArgs;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -17,36 +17,36 @@ public class PayCommand extends BaseCommand {
         String label = command.getLabel();
 
         if (!player.hasPermission("pandafly.pay")) {
-            player.hasPermission(CC.getNoPermission());
+            player.hasPermission(ChatUtil.translate("&cYou don't have permission."));
             return;
         }
 
         if (args.length < 2) {
-            player.sendMessage(CC.translate("&cUsage: /" + label + " <player> <amount>"));
+            player.sendMessage(ChatUtil.translate("&cUsage: /" + label + " <player> <amount>"));
             return;
         }
 
         Player target = Bukkit.getPlayer(args[0]);
 
         if (target == null) {
-            player.sendMessage(CC.getPlayerNotFound(args[0]));
+            player.sendMessage(ChatUtil.translate("&cPlayer not found."));
             return;
         }
 
         if (player.equals(target)) {
-            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("BALANCE.PAY-SELF")));
+            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("BALANCE.PAY-SELF")));
             return;
         }
 
         Integer amount = Ints.tryParse(args[1]);
 
         if (amount == null) {
-            player.sendMessage(CC.getNoNumber());
+            player.sendMessage(ChatUtil.translate("&cAmount must be a number."));
             return;
         }
 
         if (amount <= 0) {
-            player.sendMessage(CC.getNoPositive());
+            player.sendMessage(ChatUtil.translate("&cAmount must be positive."));
             return;
         }
 
@@ -61,10 +61,10 @@ public class PayCommand extends BaseCommand {
 
         ComboFly.get().getBalanceType().setBalance(player, playerBalance - amount);
         ComboFly.get().getBalanceType().setBalance(target, targetBalance + amount);
-        player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("BALANCE.PAY-SEND")
+        player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("BALANCE.PAY-SEND")
                 .replace("{amount}", String.valueOf(amount))
                 .replace("{target}", target.getName())));
-        target.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("BALANCE.PAY-RECEIVE")
+        target.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("BALANCE.PAY-RECEIVE")
                 .replace("{amount}", String.valueOf(amount))
                 .replace("{player}", player.getName())));
     }

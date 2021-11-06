@@ -2,7 +2,7 @@ package dev.panda.combofly.koth.task;
 
 import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.koth.KoTH;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import lombok.AllArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -28,7 +28,7 @@ public class KoTHRunnable extends BukkitRunnable {
             } else {
                 if (koth.getDecisecondsLeft() % 600 == 0 && koth.getDecisecondsLeft() != koth.getCapTime() / 100 && koth.getDecisecondsLeft() != 0) {
                     ComboFly.get().getMessageConfig().getStringList("KOTH.CONTEST").forEach(s ->
-                            Bukkit.broadcastMessage(CC.translate(s.replace("{koth}", koth.getName())
+                            Bukkit.broadcastMessage(ChatUtil.translate(s.replace("{koth}", koth.getName())
                                     .replace("{time}" , koth.getTimeLeft()))));
                 }
             }

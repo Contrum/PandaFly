@@ -1,7 +1,7 @@
 package dev.panda.combofly.listeners;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -30,7 +30,7 @@ public class EnderpearlListener implements Listener {
 				if (ComboFly.get().getEnderpearlManager().hasCooldown(player)) {
 					event.setCancelled(true);
 					player.updateInventory();
-					player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("ENDERPEARL.ON-COOLDOWN")
+					player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("ENDERPEARL.ON-COOLDOWN")
 							.replace("{cooldown}", ComboFly.get().getEnderpearlManager().getCooldown(player))));
 					return;
 				}

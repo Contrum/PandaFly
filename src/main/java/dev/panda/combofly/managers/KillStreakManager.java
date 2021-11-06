@@ -1,7 +1,7 @@
 package dev.panda.combofly.managers;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -14,12 +14,12 @@ public class KillStreakManager {
         String message = ComboFly.get().getMainConfig().getString("KILLSTREAK.MESSAGE")
                 .replace("{streak}", String.valueOf(streak))
                 .replace("{player}", player.getName());
-        Bukkit.broadcastMessage(CC.translate(message));
+        Bukkit.broadcastMessage(ChatUtil.translate(message));
     }
 
     public void messageReward(int streak, Player player){
         for (String message : ComboFly.get().getMainConfig().getConfiguration().getConfigurationSection("KILLSTREAK.REWARDS.STREAK." + streak + ".MESSAGE").getKeys(false)) {
-            player.sendMessage(CC.translate(message));
+            player.sendMessage(ChatUtil.translate(message));
         }
     }
 

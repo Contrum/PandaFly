@@ -1,12 +1,12 @@
 package dev.panda.combofly.commands.warp;
 
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 
 public class WarpCommand extends BaseCommand {
 
@@ -18,20 +18,20 @@ public class WarpCommand extends BaseCommand {
 		String label = command.getLabel();
 
 		if (args.length < 1) {
-			player.sendMessage(CC.translate("&cUsage: /" + label + " <warp>"));
-			player.sendMessage(CC.translate("&cAvailables Warps: " + ComboFly.get().getWarpManager().getWarps()));
+			player.sendMessage(ChatUtil.translate("&cUsage: /" + label + " <warp>"));
+			player.sendMessage(ChatUtil.translate("&cAvailables Warps: " + ComboFly.get().getWarpManager().getWarps()));
 			return;
 		}
 
-		String warpName = CC.capitalize(args[0]);
+		String warpName = ChatUtil.capitalize(args[0]);
 
 		if (ComboFly.get().getWarpConfig().getString("WARPS." + warpName) == null) {
-			player.sendMessage(CC.getWarpNotFound(warpName));
+			player.sendMessage(ChatUtil.translate("&cWarp '" + warpName + "' not found."));
 			return;
 		}
 
 		if (ComboFly.get().getCombatManager().hasCooldown(player)) {
-			player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("WARP.COMBAT")));
+			player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("WARP.COMBAT")));
 			return;
 		}
 
@@ -39,13 +39,13 @@ public class WarpCommand extends BaseCommand {
 
 			if (warpName.equals(warp)) {
 				if (!player.hasPermission("pandafly.warp." + warpName.toLowerCase())) {
-					player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("WARP.PERMISSION-WARP")));
+					player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("WARP.PERMISSION-WARP")));
 					return;
 				}
 
 				player.playSound(player.getLocation(), Sound.ENDERMAN_TELEPORT, 10F, 0.2F);
 				player.teleport(ComboFly.get().getWarpManager().getWarpLocation(warp));
-				player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("WARP.TELEPORTED")
+				player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("WARP.TELEPORTED")
 						.replace("{warp}", warpName)));
 			}
 		}

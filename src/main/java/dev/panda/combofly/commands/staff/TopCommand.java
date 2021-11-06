@@ -1,11 +1,11 @@
 package dev.panda.combofly.commands.staff;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.Utils;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -26,10 +26,10 @@ public class TopCommand extends BaseCommand {
             Block originBlock = origin.getBlock();
             if ((highestLocation.getBlockY() - originBlock.getY() != 1 || originBlock.getType() != Material.WATER) && originBlock.getType() != Material.STATIONARY_WATER) {
                 player.teleport(highestLocation.add(0.0, 1.0, 0.0));
-                player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("TOP.MESSAGE")));
+                player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("TOP.MESSAGE")));
                 return;
             }
         }
-        player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("TOP.NO-LOCATION")));
+        player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("TOP.NO-LOCATION")));
     }
 }

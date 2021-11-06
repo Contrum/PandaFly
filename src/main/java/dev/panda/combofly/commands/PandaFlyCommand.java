@@ -1,11 +1,11 @@
 package dev.panda.combofly.commands;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.Description;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -19,13 +19,13 @@ public class PandaFlyCommand extends BaseCommand {
         String label = command.getLabel();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&cUsage: /" + label + " <info|reload>"));
+            player.sendMessage(ChatUtil.translate("&cUsage: /" + label + " <info|reload>"));
             return;
         }
 
         if (args[0].equalsIgnoreCase("info")) {
             if (!player.hasPermission("pandafly.info")) {
-                player.sendMessage(CC.getNoPermission());
+                player.sendMessage(ChatUtil.translate("&cYou don't have permissions"));
                 return;
             }
 
@@ -33,7 +33,7 @@ public class PandaFlyCommand extends BaseCommand {
         }
         else if (args[0].equalsIgnoreCase("reload")) {
             if (!player.hasPermission("pandafly.reload")) {
-                player.sendMessage(CC.getNoPermission());
+                player.sendMessage(ChatUtil.translate("&cYou don't have permissions"));
                 return;
             }
 
@@ -43,23 +43,23 @@ public class PandaFlyCommand extends BaseCommand {
                     ComboFly.get().getStaffManager().setStaffModeItems(online);
                 }
             }
-            player.sendMessage(CC.translate("&7[&c" + Description.getName() + "&7] " +
+            player.sendMessage(ChatUtil.translate("&7[&c" + Description.getName() + "&7] " +
                     "&aAll files has been successfully reloaded."));
         }
     }
 
     private void getInfo(Player player) {
-        player.sendMessage(CC.translate("&7&m----*---------------------------*----"));
-        player.sendMessage(CC.translate(" "));
-        player.sendMessage(CC.translate("     &4\u2764 &c&l" + Description.getName() + " &4\u2764"));
-        player.sendMessage(CC.translate(""));
-        player.sendMessage(CC.translate(" &7\u27A5 &cAuthor&7: &f" + Description.getAuthors())
+        player.sendMessage(ChatUtil.translate("&7&m----*---------------------------*----"));
+        player.sendMessage(ChatUtil.translate(" "));
+        player.sendMessage(ChatUtil.translate("     &4\u2764 &c&l" + Description.getName() + " &4\u2764"));
+        player.sendMessage(ChatUtil.translate(""));
+        player.sendMessage(ChatUtil.translate(" &7\u27A5 &cAuthor&7: &f" + Description.getAuthors())
                 .replace("[", "")
                 .replace("]", ""));
-        player.sendMessage(CC.translate(" &7\u27A5 &cVersion&7: &f" + Description.getVersion()));
-        player.sendMessage(CC.translate(" &7\u27A5 &cDiscord&7: &ahttps://discord.io/Panda-Community"));
-        player.sendMessage(CC.translate(" "));
-        player.sendMessage(CC.translate("&7&m----*---------------------------*----"));
+        player.sendMessage(ChatUtil.translate(" &7\u27A5 &cVersion&7: &f" + Description.getVersion()));
+        player.sendMessage(ChatUtil.translate(" &7\u27A5 &cDiscord&7: &ahttps://discord.io/Panda-Community"));
+        player.sendMessage(ChatUtil.translate(" "));
+        player.sendMessage(ChatUtil.translate("&7&m----*---------------------------*----"));
     }
 
     private void reloadFiles() {

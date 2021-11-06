@@ -1,10 +1,10 @@
 package dev.panda.combofly.koth.commands.subcommands;
 
 import dev.panda.combofly.koth.KoTH;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.entity.Player;
 
 public class StopCommand extends BaseCommand {
@@ -16,7 +16,7 @@ public class StopCommand extends BaseCommand {
         String[] args = commandArgs.getArgs();
 
         if (args.length == 0) {
-            player.sendMessage(CC.translate("&cUsage: /koth stop (name)"));
+            player.sendMessage(ChatUtil.translate("&cUsage: /koth stop (name)"));
             return;
         }
 
@@ -24,7 +24,7 @@ public class StopCommand extends BaseCommand {
 
         if (koth != null) {
             koth.stop(false);
-            player.sendMessage(CC.translate("&aKoTH stopped correctly"));
+            player.sendMessage(ChatUtil.translate("&aKoTH stopped correctly"));
         } else {
             player.sendMessage("&cPlease insert a valid koth name!");
         }

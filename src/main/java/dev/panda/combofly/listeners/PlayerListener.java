@@ -14,7 +14,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import org.bukkit.event.player.*;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
@@ -34,7 +34,7 @@ public class PlayerListener implements Listener {
 				return;
 			ComboFly.get().getSpawnManager().removeRunnable(event.getPlayer());
 			ComboFly.get().getSpawnManager().removeCooldown(event.getPlayer());
-			event.getPlayer().sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("SPAWN.CANCEL")));
+			event.getPlayer().sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("SPAWN.CANCEL")));
 		}
 	}
 

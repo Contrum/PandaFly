@@ -1,10 +1,10 @@
 package dev.panda.combofly.commands.network;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.command.CommandSender;
 
 public class DiscordCommand extends BaseCommand {
@@ -13,7 +13,7 @@ public class DiscordCommand extends BaseCommand {
     @Override
     public void onCommand(CommandArgs command) {
         CommandSender sender = command.getSender();
-        sender.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("NETWORK.DISCORD")
+        sender.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("NETWORK.DISCORD")
                 .replace("{discord}", ComboFly.get().getMainConfig().getString("DISCORD"))));
     }
 }

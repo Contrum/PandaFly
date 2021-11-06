@@ -1,7 +1,7 @@
 package dev.panda.combofly.listeners;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -58,7 +58,7 @@ public class FreezeListener implements Listener {
 
         if (ComboFly.get().getFreezeManager().isFrozen(player)) {
             event.setCancelled(true);
-            player.sendMessage(CC.translate("&cYou can't break blocks while you're frozen."));
+            player.sendMessage(ChatUtil.translate("&cYou can't break blocks while you're frozen."));
         }
     }
 
@@ -68,7 +68,7 @@ public class FreezeListener implements Listener {
 
         if (ComboFly.get().getFreezeManager().isFrozen(player)) {
             event.setCancelled(true);
-            player.sendMessage(CC.translate("&cYou can't place blocks while you're frozen."));
+            player.sendMessage(ChatUtil.translate("&cYou can't place blocks while you're frozen."));
         }
     }
 
@@ -80,7 +80,7 @@ public class FreezeListener implements Listener {
                 && player.getInventory().getItemInHand().getType().equals(Material.ENDER_PEARL)) {
             event.setCancelled(true);
             player.updateInventory();
-            player.sendMessage(CC.translate("&cYou can't throw enderpearl while you're frozen."));
+            player.sendMessage(ChatUtil.translate("&cYou can't throw enderpearl while you're frozen."));
         }
     }
 
@@ -93,11 +93,11 @@ public class FreezeListener implements Listener {
 
             if (ComboFly.get().getFreezeManager().isFrozen(player)) {
                 event.setCancelled(true);
-                target.sendMessage(CC.translate("&c" + player.getName() + " is currently frozen."));
+                target.sendMessage(ChatUtil.translate("&c" + player.getName() + " is currently frozen."));
             }
             if (ComboFly.get().getFreezeManager().isFrozen(target)) {
                 event.setCancelled(true);
-                target.sendMessage(CC.translate("&cYou can't damage players while you're frozen."));
+                target.sendMessage(ChatUtil.translate("&cYou can't damage players while you're frozen."));
             }
         }
     }

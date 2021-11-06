@@ -1,10 +1,10 @@
 package dev.panda.combofly.commands.essentials;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -31,14 +31,14 @@ public class MessageCommand extends BaseCommand {
 		String label = command.getLabel();
 		
 		if (args.length < 2) {
-			player.sendMessage(CC.translate("&cUsage: /" + label + " <player> <message>"));
+			player.sendMessage(ChatUtil.translate("&cUsage: /" + label + " <player> <message>"));
 			return;
 		}
 
 		Player target = Bukkit.getPlayer(args[0]);
 
 		if (target == null) {
-			player.sendMessage(CC.getPlayerNotFound(args[0]));
+			player.sendMessage(ChatUtil.translate("&cPlayer not found."));
 			return;
 		}
 
@@ -48,15 +48,15 @@ public class MessageCommand extends BaseCommand {
 			message.append(args[i]).append(" ");
 		}
 
-		String playerName = ComboFly.get().getRankManager().getRank().getPrefix(player) + player.getName();
-		String targetName = ComboFly.get().getRankManager().getRank().getPrefix(target) + target.getName();
+		String playerName = ComboFly.get().getRankManager().getRank().getPrefix(player.getUniqueId()) + player.getName();
+		String targetName = ComboFly.get().getRankManager().getRank().getPrefix(target.getUniqueId()) + target.getName();
 
 		lastMessage.put(player, target);
 		lastMessage.put(target, player);
 
 		target.playSound(target.getLocation(), org.bukkit.Sound.ORB_PICKUP, 1F, 1F);
 
-		player.sendMessage(CC.translate("&7(To " + targetName + "&7) " + message));
-		target.sendMessage(CC.translate("&7(From " + playerName + "&7) " + message));
+		player.sendMessage(ChatUtil.translate("&7(To " + targetName + "&7) " + message));
+		target.sendMessage(ChatUtil.translate("&7(From " + playerName + "&7) " + message));
 	}
 }

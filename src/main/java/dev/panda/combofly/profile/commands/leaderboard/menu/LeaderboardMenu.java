@@ -2,25 +2,20 @@ package dev.panda.combofly.profile.commands.leaderboard.menu;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.profile.Profile;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.item.ItemBuilder;
-import dev.risas.panda.menu.Button;
-import dev.risas.panda.menu.Menu;
+import dev.panda.combofly.utilities.menu.Button;
+import dev.panda.combofly.utilities.menu.Menu;
+import dev.panda.item.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LeaderboardMenu extends Menu {
-
-    public LeaderboardMenu(Plugin plugin) {
-        super(plugin);
-    }
 
     @Override
     public String getTitle(Player player) {
@@ -45,11 +40,11 @@ public class LeaderboardMenu extends Menu {
         @Override
         public ItemStack getButtonItem(Player player) {
             List<String> lore = Lists.newArrayList();
-            lore.add(CC.MENU_BAR);
+            lore.add(ChatUtil.NORMAL_LINE);
             AtomicInteger pos = new AtomicInteger(1);
             Profile.getLeaderboards().get("kills").stream().limit(10).forEach(profile ->
-                    lore.add(CC.translate("&7" + pos.getAndIncrement() + ") " + "&a" + profile.getName() + " &7(" + profile.getKd().getKills() + ")")));
-            lore.add(CC.MENU_BAR);
+                    lore.add(ChatUtil.translate("&7" + pos.getAndIncrement() + ") " + "&a" + profile.getName() + " &7(" + profile.getKd().getKills() + ")")));
+            lore.add(ChatUtil.NORMAL_LINE);
             return new ItemBuilder(Material.EMERALD)
                     .name("&2Top Kills")
                     .lore(lore)
@@ -62,11 +57,11 @@ public class LeaderboardMenu extends Menu {
         @Override
         public ItemStack getButtonItem(Player player) {
             List<String> lore = Lists.newArrayList();
-            lore.add(CC.MENU_BAR);
+            lore.add(ChatUtil.NORMAL_LINE);
             AtomicInteger pos = new AtomicInteger(1);
             Profile.getLeaderboards().get("deaths").stream().limit(10).forEach(profile ->
-                    lore.add(CC.translate("&7" + pos.getAndIncrement() + ") " + "&a" + profile.getName() + " &7(" + profile.getKd().getDeaths() + ")")));
-            lore.add(CC.MENU_BAR);
+                    lore.add(ChatUtil.translate("&7" + pos.getAndIncrement() + ") " + "&a" + profile.getName() + " &7(" + profile.getKd().getDeaths() + ")")));
+            lore.add(ChatUtil.NORMAL_LINE);
             return new ItemBuilder(Material.EMERALD)
                     .name("&2Top Deaths")
                     .lore(lore)

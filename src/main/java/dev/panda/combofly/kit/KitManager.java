@@ -3,9 +3,9 @@ package dev.panda.combofly.kit;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.Time;
-import dev.risas.panda.files.FileConfig;
+import dev.panda.file.FileConfig;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Material;
@@ -165,7 +165,7 @@ public class KitManager {
         for (String kit : config.getConfiguration().getConfigurationSection("KITS").getKeys(false)) {
             if (kitName.equals(kit)) {
                 if (!player.hasPermission("pandafly.kit." + kitName.toLowerCase())) {
-                    player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("KIT.PERMISSION-KIT")));
+                    player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("KIT.PERMISSION-KIT")));
                     return;
                 }
                 if (!this.isState(kit)) {
@@ -173,7 +173,7 @@ public class KitManager {
                 }
 
                 if (this.hasCooldown(kitName, player)) {
-                    player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("KIT.COOLDOWN")
+                    player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("KIT.COOLDOWN")
                             .replace("{kit}", kitName)
                             .replace("{cooldown}", Time.formatDuration(this.getCooldown(kitName, player)))));
                     return;
@@ -182,7 +182,7 @@ public class KitManager {
                 if (this.getDelayKitInt(kitName) > 0) this.setCooldown(kitName, player, this.getDelayKitInt(kitName));
 
                 this.equipKit(kitName, player);
-                player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("KIT.EQUIP-KIT")
+                player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("KIT.EQUIP-KIT")
                         .replace("{kit}", kitName)));
             }
         }

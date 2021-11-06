@@ -6,7 +6,7 @@ import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.profile.comparator.ProfileDeathsComparator;
 import dev.panda.combofly.profile.comparator.ProfileKillsComparator;
 import dev.panda.combofly.profile.entry.KDEntry;
-import dev.risas.panda.files.FileConfig;
+import dev.panda.file.FileConfig;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
@@ -64,10 +64,10 @@ public class Profile implements Supplier<Profile> {
     public void save(Player player) {
         FileConfig config = ComboFly.get().getProfileConfig();
 
-        if (player != null) config.getConfiguration().set("PROFILES." + uuid.toString() + ".name", player.getName());
-        config.getConfiguration().set("PROFILES." + uuid.toString() + ".kills", kd.getKills());
-        config.getConfiguration().set("PROFILES." + uuid.toString() + ".deaths", kd.getDeaths());
-        config.getConfiguration().set("PROFILES." + uuid.toString() + ".balance", balance);
+        if (player != null) config.getConfiguration().set("PROFILES." + uuid + ".name", player.getName());
+        config.getConfiguration().set("PROFILES." + uuid + ".kills", kd.getKills());
+        config.getConfiguration().set("PROFILES." + uuid + ".deaths", kd.getDeaths());
+        config.getConfiguration().set("PROFILES." + uuid + ".balance", balance);
 
         config.save();
         config.reload();
@@ -77,10 +77,11 @@ public class Profile implements Supplier<Profile> {
         FileConfig config = ComboFly.get().getProfileConfig();
         try {
             this.name = Bukkit.getOfflinePlayer(uuid).getName();
-            this.kd.setKills(config.getInt("PROFILES." + uuid.toString() + ".kills"));
-            this.kd.setDeaths(config.getInt("PROFILES." + uuid.toString() + ".deaths"));
-            this.balance = config.getInt("PROFILES." + uuid.toString() + ".balance");
-        } catch (Exception exception) {
+            this.kd.setKills(config.getInt("PROFILES." + uuid + ".kills"));
+            this.kd.setDeaths(config.getInt("PROFILES." + uuid + ".deaths"));
+            this.balance = config.getInt("PROFILES." + uuid + ".balance");
+        }
+        catch (Exception exception) {
             this.kd.setKills(0);
             this.kd.setDeaths(0);
             this.balance = 0;

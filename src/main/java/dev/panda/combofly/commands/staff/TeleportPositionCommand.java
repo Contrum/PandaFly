@@ -1,10 +1,10 @@
 package dev.panda.combofly.commands.staff;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -18,7 +18,7 @@ public class TeleportPositionCommand extends BaseCommand {
         String label = command.getLabel();
         
         if (args.length < 3) {
-            player.sendMessage(CC.translate("&cUsage: /" + label + " <x> <y> <z>"));
+            player.sendMessage(ChatUtil.translate("&cUsage: /" + label + " <x> <y> <z>"));
             return;
         }
 
@@ -27,6 +27,6 @@ public class TeleportPositionCommand extends BaseCommand {
         double getZ = Double.parseDouble(args[2]);
         Location location = new Location(player.getLocation().getWorld(), getX, getY, getZ);
         player.teleport(location);
-        player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("TPPOSITION.MESSAGE")));
+        player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("TPPOSITION.MESSAGE")));
     }
 }

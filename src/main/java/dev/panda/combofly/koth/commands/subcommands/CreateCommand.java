@@ -2,10 +2,10 @@ package dev.panda.combofly.koth.commands.subcommands;
 
 import dev.panda.combofly.koth.KoTH;
 import dev.panda.combofly.koth.Selection;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.entity.Player;
 
 import java.text.SimpleDateFormat;
@@ -20,7 +20,7 @@ public class CreateCommand extends BaseCommand {
         String[] args = commandArgs.getArgs();
 
         if (args.length == 0) {
-            player.sendMessage(CC.translate("&cPlease insert a valid name!"));
+            player.sendMessage(ChatUtil.translate("&cPlease insert a valid name!"));
             return;
         }
 
@@ -34,9 +34,9 @@ public class CreateCommand extends BaseCommand {
             koth.setDate(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
             KoTH.getKoths().add(koth);
             koth.save();
-            player.sendMessage(CC.translate("&aKoTH &b" + name + " &ahas been created!"));
+            player.sendMessage(ChatUtil.translate("&aKoTH &b" + name + " &ahas been created!"));
         } else {
-            player.sendMessage(CC.translate("&cPlease select a valid higher and lower locations"));
+            player.sendMessage(ChatUtil.translate("&cPlease select a valid higher and lower locations"));
         }
     }
 }

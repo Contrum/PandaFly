@@ -1,7 +1,7 @@
 package dev.panda.combofly.listeners;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.staff.StaffItems;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -36,15 +36,15 @@ StaffListener implements Listener {
         Player player = event.getPlayer();
 
         if (player.getName().equals("TulioTriste") || player.getName().equals("Risas")) {
-            player.sendMessage(CC.translate("&7&m--------------------------------"));
-            player.sendMessage(CC.translate("&4&lThis server is using the PandaFly"));
-            player.sendMessage(CC.translate(""));
-            player.sendMessage(CC.translate(" &cPlugin Version: &f" + plugin.getDescription().getVersion()));
-            player.sendMessage(CC.translate(" &cPlugin Name: &f" + plugin.getDescription().getName()));
-            player.sendMessage(CC.translate(""));
-            player.sendMessage(CC.translate(" &cServer Version: &f" + plugin.getServer().getVersion()));
-            player.sendMessage(CC.translate(" &cSpigot Name: &f" + plugin.getServer().getName()));
-            player.sendMessage(CC.translate("&7&m--------------------------------"));
+            player.sendMessage(ChatUtil.translate("&7&m--------------------------------"));
+            player.sendMessage(ChatUtil.translate("&4&lThis server is using the PandaFly"));
+            player.sendMessage(ChatUtil.translate(""));
+            player.sendMessage(ChatUtil.translate(" &cPlugin Version: &f" + plugin.getDescription().getVersion()));
+            player.sendMessage(ChatUtil.translate(" &cPlugin Name: &f" + plugin.getDescription().getName()));
+            player.sendMessage(ChatUtil.translate(""));
+            player.sendMessage(ChatUtil.translate(" &cServer Version: &f" + plugin.getServer().getVersion()));
+            player.sendMessage(ChatUtil.translate(" &cSpigot Name: &f" + plugin.getServer().getName()));
+            player.sendMessage(ChatUtil.translate("&7&m--------------------------------"));
         }
 
         if (ComboFly.get().getStaffManager().isStaffEnable() && ComboFly.get().getStaffManager().isStaff(player)) {
@@ -147,10 +147,10 @@ StaffListener implements Listener {
 
                 if (staff != null) {
                     player.teleport(staff);
-                    player.sendMessage(CC.translate("&fTeleport to &c" + staff.getName() + "&f."));
+                    player.sendMessage(ChatUtil.translate("&fTeleport to &c" + staff.getName() + "&f."));
                 }
                 else {
-                    player.sendMessage(CC.translate("&cStaff not found."));
+                    player.sendMessage(ChatUtil.translate("&cStaff not found."));
                 }
                 player.closeInventory();
             }
@@ -172,10 +172,10 @@ StaffListener implements Listener {
 
                 if (miner != null) {
                     player.teleport(miner);
-                    player.sendMessage(CC.translate("&fTeleport to &c" + miner.getName() + "&f."));
+                    player.sendMessage(ChatUtil.translate("&fTeleport to &c" + miner.getName() + "&f."));
                 }
                 else {
-                    player.sendMessage(CC.translate("&cMiner not found."));
+                    player.sendMessage(ChatUtil.translate("&cMiner not found."));
                 }
                 player.closeInventory();
             }
@@ -262,14 +262,14 @@ StaffListener implements Listener {
                     if (ComboFly.get().getStaffManager().isStaffMode(player)) {
                         player.getInventory().setItem(ComboFly.get().getStaffitemsConfig().getInt("VANISH-OFF.SLOT"), StaffItems.getVanishOff());
                     }
-                    player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("VANISH.DISABLE")));
+                    player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("VANISH.DISABLE")));
                 }
                 if (StaffItems.getVanishOff().isSimilar(item)) {
                     ComboFly.get().getVanishManager().setVanish(player);
                     if (ComboFly.get().getStaffManager().isStaffMode(player)) {
                         player.getInventory().setItem(ComboFly.get().getStaffitemsConfig().getInt("VANISH-ON.SLOT"), StaffItems.getVanishOn());
                     }
-                    player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("VANISH.ENABLE")));
+                    player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("VANISH.ENABLE")));
                 }
             }
         }
@@ -338,7 +338,7 @@ StaffListener implements Listener {
                     }
 
                     if (players.isEmpty()) {
-                        player.sendMessage(CC.translate("&cNothing to teleport."));
+                        player.sendMessage(ChatUtil.translate("&cNothing to teleport."));
                         return;
                     }
 
@@ -346,7 +346,7 @@ StaffListener implements Listener {
 
                     if (player != random) {
                         player.teleport(random);
-                        player.sendMessage(CC.translate("&fTeleport to &c" + random.getName() + "&f."));
+                        player.sendMessage(ChatUtil.translate("&fTeleport to &c" + random.getName() + "&f."));
                     }
                 }
             }

@@ -2,7 +2,7 @@ package dev.panda.combofly.listeners;
 
 import com.sk89q.worldedit.bukkit.selections.CuboidSelection;
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,7 +24,7 @@ public class CombatListener implements Listener {
 		Player player = event.getPlayer();
 		if (ComboFly.get().getCombatManager().hasCooldown(player)) {
 			player.setHealth(0.0);
-			Bukkit.broadcastMessage(CC.translate("&7[&4Combat&7] &c" + player.getName() + " &fhas been disconnect in Combat."));
+			Bukkit.broadcastMessage(ChatUtil.translate("&7[&4Combat&7] &c" + player.getName() + " &fhas been disconnect in Combat."));
 		}
 		ComboFly.get().getCombatManager().removeCooldown(player);
 	}
@@ -34,7 +34,7 @@ public class CombatListener implements Listener {
 		Player player = event.getPlayer();
 		if (ComboFly.get().getCombatManager().hasCooldown(player)) {
 			player.setHealth(0.0);
-			Bukkit.broadcastMessage(CC.translate("&7[&4Combat&7] &c" + player.getName() + " &fhas been disconnect in Combat."));
+			Bukkit.broadcastMessage(ChatUtil.translate("&7[&4Combat&7] &c" + player.getName() + " &fhas been disconnect in Combat."));
 		}
 		ComboFly.get().getCombatManager().removeCooldown(player);
 	}

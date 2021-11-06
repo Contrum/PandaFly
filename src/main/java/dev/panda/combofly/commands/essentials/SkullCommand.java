@@ -1,10 +1,10 @@
 package dev.panda.combofly.commands.essentials;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -20,7 +20,7 @@ public class SkullCommand extends BaseCommand {
         String label = command.getLabel();
 
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&cUsage: /" + label + " <player>"));
+            player.sendMessage(ChatUtil.translate("&cUsage: /" + label + " <player>"));
             return;
         }
         player.getInventory().addItem(this.getSkull(args[0]));
@@ -30,7 +30,7 @@ public class SkullCommand extends BaseCommand {
         ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         meta.setOwner(arg);
-        meta.setDisplayName(CC.translate("&fSkull of &c" + arg));
+        meta.setDisplayName(ChatUtil.translate("&fSkull of &c" + arg));
         skull.setItemMeta(meta);
         return skull;
     }

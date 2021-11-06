@@ -1,7 +1,7 @@
 package dev.panda.combofly.managers;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import org.bukkit.entity.Player;
 
 public class SpeedManager {
@@ -19,15 +19,15 @@ public class SpeedManager {
             this.walkSpeed = Integer.parseInt(amount);
         }
         catch (NumberFormatException e) {
-            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("SPEED.WALK.WRONG-FORMAT")));
+            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("SPEED.WALK.WRONG-FORMAT")));
             return;
         }
         if (this.walkSpeed < 1 || this.walkSpeed > 10) {
-            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("SPEED.WALK.WRONG-FORMAT")));
+            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("SPEED.WALK.WRONG-FORMAT")));
             return;
         }
         player.setWalkSpeed((float) this.walkSpeed / 10);
-        player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("SPEED.WALK.SPEED")
+        player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("SPEED.WALK.SPEED")
                 .replace("{speed}", String.valueOf(this.walkSpeed))));
     }
 
@@ -36,15 +36,15 @@ public class SpeedManager {
             this.flySpeed = Integer.parseInt(amount);
         }
         catch (NumberFormatException e) {
-            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("SPEED.FLY.WRONG-FORMAT")));
+            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("SPEED.FLY.WRONG-FORMAT")));
             return;
         }
         if (this.flySpeed < 1 || this.flySpeed > 10) {
-            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("SPEED.FLY.WRONG-FORMAT")));
+            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("SPEED.FLY.WRONG-FORMAT")));
             return;
         }
         player.setFlySpeed((float) this.flySpeed / 10);
-        player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("SPEED.FLY.SPEED")
+        player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("SPEED.FLY.SPEED")
                 .replace("{speed}", String.valueOf(this.flySpeed))));
     }
 }

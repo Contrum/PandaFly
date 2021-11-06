@@ -1,9 +1,9 @@
 package dev.panda.combofly.commands.staff;
 
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -17,18 +17,18 @@ public class InvseeCommand extends BaseCommand {
         String label = command.getLabel();
 
         if (args.length < 1){
-            player.sendMessage(CC.translate("&cUsage: /" + label + " <player>"));
+            player.sendMessage(ChatUtil.translate("&cUsage: /" + label + " <player>"));
             return;
         }
 
         Player target = Bukkit.getPlayer(args[0]);
 
         if (target == null){
-            player.sendMessage(CC.getPlayerNotFound(args[0]));
+            player.sendMessage(ChatUtil.translate("&cPlayer not found."));
             return;
         }
         if (player.equals(target)) {
-            player.sendMessage(CC.translate("&cYou cant see yourself inventory."));
+            player.sendMessage(ChatUtil.translate("&cYou cant see yourself inventory."));
             return;
         }
         player.openInventory(target.getInventory());

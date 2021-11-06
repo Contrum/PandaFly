@@ -2,7 +2,7 @@ package dev.panda.combofly.listeners;
 
 import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.profile.Profile;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.Ints;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -43,7 +43,7 @@ public class ShopListener implements Listener {
                         int money = Integer.parseInt(line4.replace("$", ""));
 
                         if (money > Profile.getProfiles().get(player.getUniqueId()).getBalance()) {
-                            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("SHOP.ENOUGH-MONEY")));
+                            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("SHOP.ENOUGH-MONEY")));
                             return;
                         }
 
@@ -59,7 +59,7 @@ public class ShopListener implements Listener {
                     int money = Integer.parseInt(line4.replace("$", ""));
 
                     if (money > Profile.getProfiles().get(player.getUniqueId()).getBalance()) {
-                        player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("SHOP.ENOUGH-MONEY")));
+                        player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("SHOP.ENOUGH-MONEY")));
                         return;
                     }
 

@@ -2,7 +2,7 @@ package dev.panda.combofly.listeners;
 
 import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.profile.Profile;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -26,7 +26,7 @@ public class ChatListener implements Listener {
 
 		if (ComboFly.get().getFreezeManager().isFrozen(player)) {
 			event.setCancelled(true);
-			player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("CHAT.FROZEN")
+			player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("CHAT.FROZEN")
 					.replace("{player}", player.getName())
 					.replace("{message}", message)));
 			ComboFly.get().getStaffManager().sendMessageAllStaffs(ComboFly.get().getMessageConfig().getString("CHAT.FROZEN")
@@ -38,13 +38,13 @@ public class ChatListener implements Listener {
 		if (ComboFly.get().getMessageConfig().getBoolean("CHAT.TOGGLE")) {
 			String chat = ComboFly.get().getMessageConfig().getString("CHAT.FORMAT")
 					.replace("{player}", player.getName())
-					.replace("{prefix}", ComboFly.get().getRankManager().getRank().getPrefix(player))
-					.replace("{suffix}", ComboFly.get().getRankManager().getRank().getSuffix(player))
+					.replace("{prefix}", ComboFly.get().getRankManager().getRank().getPrefix(player.getUniqueId()))
+					.replace("{suffix}", ComboFly.get().getRankManager().getRank().getSuffix(player.getUniqueId()))
 					.replace("{kills}", String.valueOf(Profile.getProfiles().get(player.getUniqueId()).getKd().getKills()))
-					.replace("{message}", (player.hasPermission("pandafly.chat.color") ? (CC.translate(message
+					.replace("{message}", (player.hasPermission("pandafly.chat.color") ? (ChatUtil.translate(message
 							.replace("%", "%%"))) : (message
 							.replace("%", "%%"))));
-			event.setFormat(CC.translate(chat));
+			event.setFormat(ChatUtil.translate(chat));
 		}
 	}
 }

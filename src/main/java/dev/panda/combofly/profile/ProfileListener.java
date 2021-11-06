@@ -1,7 +1,7 @@
 package dev.panda.combofly.profile;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -49,7 +49,7 @@ public class ProfileListener implements Listener {
             Profile.getProfiles().get(player.getUniqueId()).getKd().incrementDeaths();
 
             if (killer == null) {
-                event.setDeathMessage(CC.translate(ComboFly.get().getMessageConfig().getString("KILL-MESSAGE.NO-KILLER")
+                event.setDeathMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("KILL-MESSAGE.NO-KILLER")
                         .replace("{player}", player.getName())
                         .replace("{kills}", String.valueOf(playerKills))));
                 return;
@@ -61,7 +61,7 @@ public class ProfileListener implements Listener {
 
             if (ComboFly.get().getMainConfig().getBoolean("KILL-MONEY.ENABLE")) {
                 ComboFly.get().getBalanceType().giveBalance(killer, killerBalance + ComboFly.get().getMainConfig().getInt("KILL-MONEY.MONEY"));
-                killer.sendMessage(CC.translate(ComboFly.get().getMainConfig().getString("KILL-MONEY.KILL-MESSAGE")
+                killer.sendMessage(ChatUtil.translate(ComboFly.get().getMainConfig().getString("KILL-MONEY.KILL-MESSAGE")
                         .replace("{money}", String.valueOf(ComboFly.get().getMainConfig().getInt("KILL-MONEY.MONEY")))
                         .replace("{target}", player.getName())));
             }
@@ -74,7 +74,7 @@ public class ProfileListener implements Listener {
 
             player.getWorld().strikeLightningEffect(player.getLocation());
             if (killer.getItemInHand().getType().equals(Material.AIR) || killer.getItemInHand() == null) {
-                event.setDeathMessage(CC.translate(ComboFly.get().getMessageConfig().getString("KILL-MESSAGE.KILLER-NO-ITEM")
+                event.setDeathMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("KILL-MESSAGE.KILLER-NO-ITEM")
                         .replace("{player}", player.getName())
                         .replace("{kills}", String.valueOf(playerKills))
                         .replace("{killer}", killer.getName())
@@ -83,7 +83,7 @@ public class ProfileListener implements Listener {
             else {
                 Material itemType = killer.getItemInHand().getType();
                 String itemDisplayname = killer.getItemInHand().getItemMeta().getDisplayName();
-                event.setDeathMessage(CC.translate(ComboFly.get().getMessageConfig().getString("KILL-MESSAGE.KILLER-WITH-ITEM")
+                event.setDeathMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("KILL-MESSAGE.KILLER-WITH-ITEM")
                         .replace("{player}", player.getName())
                         .replace("{kills}", String.valueOf(playerKills))
                         .replace("{killer}", killer.getName())
@@ -104,7 +104,7 @@ public class ProfileListener implements Listener {
             }
         }
         else if (ComboFly.get().getMainConfig().getBoolean("JOIN-MESSAGE.STATUS")) {
-            ComboFly.get().getMainConfig().getStringList("JOIN-MESSAGE.MESSAGE").forEach(key -> player.sendMessage(CC.translate(key
+            ComboFly.get().getMainConfig().getStringList("JOIN-MESSAGE.MESSAGE").forEach(key -> player.sendMessage(ChatUtil.translate(key
                     .replace("{player}", player.getName())
                     .replace("{discord}", ComboFly.get().getMainConfig().getString("DISCORD"))
                     .replace("{store}", ComboFly.get().getMainConfig().getString("STORE"))

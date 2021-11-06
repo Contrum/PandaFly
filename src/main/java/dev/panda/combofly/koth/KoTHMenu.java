@@ -1,24 +1,19 @@
 package dev.panda.combofly.koth;
 
 import com.google.common.collect.Maps;
-import dev.risas.panda.item.ItemBuilder;
-import dev.risas.panda.menu.Button;
-import dev.risas.panda.menu.Menu;
+import dev.panda.combofly.utilities.menu.Button;
+import dev.panda.combofly.utilities.menu.Menu;
+import dev.panda.item.ItemBuilder;
 import lombok.AllArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 
 import java.util.Map;
 
 public class KoTHMenu extends Menu {
-
-    public KoTHMenu(Plugin plugin) {
-        super(plugin);
-    }
 
     @Override
     public String getTitle(Player player) {

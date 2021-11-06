@@ -1,10 +1,10 @@
 package dev.panda.combofly.commands.staff;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -19,24 +19,24 @@ public class FreezeCommand extends BaseCommand {
         String label = command.getLabel();
         
         if (args.length < 1) {
-            sender.sendMessage(CC.translate("&cUsage: /" + label + " <player>"));
+            sender.sendMessage(ChatUtil.translate("&cUsage: /" + label + " <player>"));
             return;
         }
 
         Player player = Bukkit.getPlayer(args[0]);
 
         if (player == null) {
-            sender.sendMessage(CC.getPlayerNotFound(args[0]));
+            sender.sendMessage(ChatUtil.translate("&cPlayer '" + args[0] + "' not found."));
             return;
         }
 
         if (sender.equals(player)) {
-            sender.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("FREEZE.FROZEN-SELF")));
+            sender.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("FREEZE.FROZEN-SELF")));
             return;
         }
 
         if (ComboFly.get().getStaffManager().isStaff(player)) {
-            sender.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("FREEZE.FROZEN-STAFF")));
+            sender.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("FREEZE.FROZEN-STAFF")));
             return;
         }
 
@@ -45,7 +45,7 @@ public class FreezeCommand extends BaseCommand {
             ComboFly.get().getStaffManager().sendMessageAllStaffs(ComboFly.get().getMessageConfig().getString("FREEZE.UNFROZEN-PLAYER-STAFF")
                     .replace("{staff}", sender.getName())
                     .replace("{player}", player.getName()));
-            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("FREEZE.UNFROZEN-PLAYER")
+            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("FREEZE.UNFROZEN-PLAYER")
                     .replace("{staff}", sender.getName())));
         }
         else {
@@ -53,7 +53,7 @@ public class FreezeCommand extends BaseCommand {
             ComboFly.get().getStaffManager().sendMessageAllStaffs(ComboFly.get().getMessageConfig().getString("FREEZE.FROZEN-PLAYER-STAFF")
                     .replace("{staff}", sender.getName())
                     .replace("{player}", player.getName()));
-            player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("FREEZE.FROZEN-PLAYER")
+            player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("FREEZE.FROZEN-PLAYER")
                     .replace("{staff}", sender.getName())));
         }
     }

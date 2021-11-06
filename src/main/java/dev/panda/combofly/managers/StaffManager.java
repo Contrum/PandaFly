@@ -1,7 +1,7 @@
 package dev.panda.combofly.managers;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.staff.StaffItems;
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -69,20 +69,20 @@ public class StaffManager {
     public void sendMessageAllStaffs(String message) {
         for (Player online : Bukkit.getServer().getOnlinePlayers()) {
             if (isStaff(online)) {
-                online.sendMessage(CC.translate(message));
+                online.sendMessage(ChatUtil.translate(message));
             }
         }
     }
 
     public void getOnlineStaff(CommandSender sender) {
-        sender.sendMessage(CC.translate("&cStaff's Online"));
-        sender.sendMessage(CC.translate(""));
+        sender.sendMessage(ChatUtil.translate("&cStaff's Online"));
+        sender.sendMessage(ChatUtil.translate(""));
         for (Player online : Bukkit.getServer().getOnlinePlayers()) {
             if (ComboFly.get().getStaffManager().isStaff(online)) {
-                sender.sendMessage(CC.translate("&f\u2738 &c" + online.getName()));
+                sender.sendMessage(ChatUtil.translate("&f\u2738 &c" + online.getName()));
             }
         }
-        sender.sendMessage(CC.translate(""));
+        sender.sendMessage(ChatUtil.translate(""));
     }
 
     public void saveArmor(Player player) {

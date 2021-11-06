@@ -1,7 +1,7 @@
 package dev.panda.combofly.managers;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class FreezeManager {
 
     private void frozenMessage(Player player) {
         for (String lines : ComboFly.get().getMessageConfig().getStringList("FREEZE.FROZEN")) {
-            player.sendMessage(CC.translate(lines));
+            player.sendMessage(ChatUtil.translate(lines));
         }
     }
 }

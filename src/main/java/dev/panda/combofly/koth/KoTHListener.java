@@ -3,7 +3,7 @@ package dev.panda.combofly.koth;
 import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.koth.event.EnterCuboidEvent;
 import dev.panda.combofly.koth.event.LeaveCuboidEvent;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -105,18 +105,18 @@ public class KoTHListener implements Listener {
             event.setUseItemInHand(Event.Result.DENY);
             event.setUseInteractedBlock(Event.Result.DENY);
 
-            String message = CC.AQUA + (location == 1 ? "First" : "Second") +
-                    " location " + CC.YELLOW + "(" + CC.GREEN +
-                    clicked.getX() + CC.YELLOW + ", " + CC.GREEN +
-                    clicked.getY() + CC.YELLOW + ", " + CC.GREEN +
-                    clicked.getZ() + CC.YELLOW + ")" + CC.AQUA + " has been set!";
+            String message = "&b" + (location == 1 ? "First" : "Second") +
+                    " location " + "&e" + "(" + "&a" +
+                    clicked.getX() + "&e" + ", " + "&a" +
+                    clicked.getY() + "&e" + ", " + "&a" +
+                    clicked.getZ() + "&e" + ")" + "&b" + " has been set!";
 
             if (selection.isFullObject()) {
-                message += CC.RED + " (" + CC.YELLOW + selection.getCuboid().volume() + CC.AQUA + " blocks" +
-                        CC.RED + ")";
+                message += "&c" + " (" + "&e" + selection.getCuboid().volume() + "&b" + " blocks" +
+                        "&c" + ")";
             }
 
-            player.sendMessage(message);
+            player.sendMessage(ChatUtil.translate(message));
         }
     }
 }

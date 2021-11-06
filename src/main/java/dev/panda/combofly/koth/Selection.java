@@ -2,9 +2,8 @@ package dev.panda.combofly.koth;
 
 import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.koth.cuboid.Cuboid;
-import dev.risas.panda.item.ItemBuilder;
+import dev.panda.item.ItemBuilder;
 import lombok.Data;
-import lombok.NonNull;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -25,8 +24,8 @@ public class Selection {
 				.build();
 	}
 
-	@NonNull private Location point1;
-	@NonNull private Location point2;
+	private Location point1;
+	private Location point2;
 
 	/**
 	 * Private, so that we can create a new instance in the Selection#createOrGetSelection method.
@@ -77,5 +76,4 @@ public class Selection {
 		point1 = null;
 		point2 = null;
 	}
-
 }

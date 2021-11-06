@@ -2,11 +2,11 @@ package dev.panda.combofly.commands.essentials;
 
 import com.sk89q.worldedit.bukkit.selections.Selection;
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.Utils;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.entity.Player;
 
 public class ClaimCommand extends BaseCommand {
@@ -24,12 +24,12 @@ public class ClaimCommand extends BaseCommand {
 
         if (args[0].equalsIgnoreCase("create")) {
             if (!player.hasPermission("pandafly.claim.create")) {
-                player.sendMessage(CC.getNoPermission());
+                player.sendMessage(ChatUtil.translate("&cYou don't have permissions"));
                 return;
             }
 
             if (args.length < 3) {
-                player.sendMessage(CC.translate("&cUsage: /" + label + " create <nopvp|pvp> <name>"));
+                player.sendMessage(ChatUtil.translate("&cUsage: /" + label + " create <nopvp|pvp> <name>"));
                 return;
             }
 
@@ -42,37 +42,37 @@ public class ClaimCommand extends BaseCommand {
             String claim = sb.toString().trim();
 
             if (ComboFly.get().getClaimConfig().getConfiguration().getConfigurationSection("CLAIMS." + claim) != null) {
-                player.sendMessage(CC.translate("&cThis claim is already created."));
+                player.sendMessage(ChatUtil.translate("&cThis claim is already created."));
                 return;
             }
 
             Selection sel = Utils.getWorldEdit().getSelection(player);
 
             if (sel == null) {
-                player.sendMessage(CC.translate("&cYou must make a WorldEdit selection."));
+                player.sendMessage(ChatUtil.translate("&cYou must make a WorldEdit selection."));
                 return;
             }
 
             if (args[1].equalsIgnoreCase("nopvp")) {
                 ComboFly.get().getClaimManager().createClaimNoPvP(claim, sel);
-                player.sendMessage(CC.translate("&fYou have created &c" + claim + " &fClaim."));
+                player.sendMessage(ChatUtil.translate("&fYou have created &c" + claim + " &fClaim."));
             }
             else if (args[1].equalsIgnoreCase("pvp")) {
                 ComboFly.get().getClaimManager().createClaimPvP(claim, sel);
-                player.sendMessage(CC.translate("&fYou have created &c" + claim + " &fClaim."));
+                player.sendMessage(ChatUtil.translate("&fYou have created &c" + claim + " &fClaim."));
             }
             else {
-                player.sendMessage(CC.translate("&cUsage: /" + label + " create <nopvp|pvp> <name>"));
+                player.sendMessage(ChatUtil.translate("&cUsage: /" + label + " create <nopvp|pvp> <name>"));
             }
         }
         else if (args[0].equalsIgnoreCase("delete")) {
             if (!player.hasPermission("pandafly.claim.delete")) {
-                player.sendMessage(CC.getNoPermission());
+                player.sendMessage(ChatUtil.translate("&cYou don't have permissions"));
                 return;
             }
 
             if (args.length < 2) {
-                player.sendMessage(CC.translate("&cUsage: /" + label + " delete <name>"));
+                player.sendMessage(ChatUtil.translate("&cUsage: /" + label + " delete <name>"));
                 return;
             }
 
@@ -85,20 +85,20 @@ public class ClaimCommand extends BaseCommand {
             String claim = sb.toString().trim();
 
             if (ComboFly.get().getClaimConfig().getConfiguration().getConfigurationSection("CLAIMS." + claim) == null) {
-                player.sendMessage(CC.translate("&cThis claim is already deleted."));
+                player.sendMessage(ChatUtil.translate("&cThis claim is already deleted."));
                 return;
             }
 
             ComboFly.get().getClaimManager().deleteClaim(claim);
-            player.sendMessage(CC.translate("&fYou have deleted &c" + claim + " &fClaim."));
+            player.sendMessage(ChatUtil.translate("&fYou have deleted &c" + claim + " &fClaim."));
         }
         else if (args[0].equalsIgnoreCase("list")) {
             if (!player.hasPermission("pandafly.claim.list")) {
-                player.sendMessage(CC.getNoPermission());
+                player.sendMessage(ChatUtil.translate("&cYou don't have permissions"));
                 return;
             }
 
-            player.sendMessage(CC.translate("&cClaims Availables: " + ComboFly.get().getClaimManager().getClaimList()));
+            player.sendMessage(ChatUtil.translate("&cClaims Availables: " + ComboFly.get().getClaimManager().getClaimList()));
         }
         else {
             this.getUsage(player, label);
@@ -106,12 +106,12 @@ public class ClaimCommand extends BaseCommand {
     }
 
     private void getUsage(Player player, String label) {
-        player.sendMessage(CC.translate("&7&m------------------------------"));
-        player.sendMessage(CC.translate("&4Claim Commands"));
+        player.sendMessage(ChatUtil.translate("&7&m------------------------------"));
+        player.sendMessage(ChatUtil.translate("&4Claim Commands"));
         player.sendMessage("");
-        player.sendMessage(CC.translate("&c/" + label + " create <nopvp|pvp> <name> &7- &fCreate a claim."));
-        player.sendMessage(CC.translate("&c/" + label + " delete <name> &7- &fDelete a claim."));
-        player.sendMessage(CC.translate("&c/" + label + " list &7- &fList of all claims."));
-        player.sendMessage(CC.translate("&7&m------------------------------"));
+        player.sendMessage(ChatUtil.translate("&c/" + label + " create <nopvp|pvp> <name> &7- &fCreate a claim."));
+        player.sendMessage(ChatUtil.translate("&c/" + label + " delete <name> &7- &fDelete a claim."));
+        player.sendMessage(ChatUtil.translate("&c/" + label + " list &7- &fList of all claims."));
+        player.sendMessage(ChatUtil.translate("&7&m------------------------------"));
     }
 }

@@ -1,10 +1,10 @@
 package dev.panda.combofly.koth.commands.subcommands;
 
 import dev.panda.combofly.koth.KoTH;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.entity.Player;
 
 public class DeleteCommand extends BaseCommand {
@@ -16,7 +16,7 @@ public class DeleteCommand extends BaseCommand {
         String[] args = commandArgs.getArgs();
 
         if (args.length == 0) {
-            player.sendMessage(CC.translate("&cUsage: /koth delete (name)"));
+            player.sendMessage(ChatUtil.translate("&cUsage: /koth delete (name)"));
             return;
         }
 
@@ -24,9 +24,9 @@ public class DeleteCommand extends BaseCommand {
         KoTH koth = KoTH.getFromName(name);
         if (koth != null) {
             koth.delete();
-            player.sendMessage(CC.translate("&aKoTH &b" + name + " &ahas been deleted!"));
+            player.sendMessage(ChatUtil.translate("&aKoTH &b" + name + " &ahas been deleted!"));
         } else {
-            player.sendMessage(CC.translate("&cPlease insert a valid KoTH name!"));
+            player.sendMessage(ChatUtil.translate("&cPlease insert a valid KoTH name!"));
         }
     }
 }

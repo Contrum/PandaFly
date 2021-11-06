@@ -5,7 +5,7 @@ import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.koth.KoTH;
 import dev.panda.combofly.profile.Profile;
 import dev.panda.combofly.utilities.Animation;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.Utils;
 import dev.panda.combofly.utilities.scoreboard.AssembleAdapter;
 import org.bukkit.Bukkit;
@@ -18,7 +18,7 @@ public class ScoreboardProvider implements AssembleAdapter {
 
     @Override
     public String getTitle(Player player) {
-        return CC.translate(Animation.getScoreboardTitle());
+        return ChatUtil.translate(Animation.getScoreboardTitle());
     }
 
     @Override
@@ -102,6 +102,6 @@ public class ScoreboardProvider implements AssembleAdapter {
             lines.add(lines.size() - 1, "");
             lines.add(lines.size() - 1, Animation.getScoreboardFooter());
         }
-        return CC.translate(lines);
+        return ChatUtil.translate(lines);
     }
 }

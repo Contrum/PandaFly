@@ -1,11 +1,11 @@
 package dev.panda.combofly.koth.commands.subcommands;
 
 import dev.panda.combofly.koth.KoTH;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.TimeUtil;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.entity.Player;
 
 public class StartCommand extends BaseCommand {
@@ -18,7 +18,7 @@ public class StartCommand extends BaseCommand {
         String label = commandArgs.getLabel();
 
         if (args.length == 0 || args.length == 1) {
-            player.sendMessage(CC.translate("&cUsage: /koth start (name) (time)"));
+            player.sendMessage(ChatUtil.translate("&cUsage: /koth start (name) (time)"));
             return;
         }
 
@@ -27,9 +27,9 @@ public class StartCommand extends BaseCommand {
         KoTH koth = KoTH.getFromName(name);
         if (koth != null) {
             koth.start(time);
-            player.sendMessage(CC.translate("&aThe KoTH &b" + name + " &ahas been Started!"));
+            player.sendMessage(ChatUtil.translate("&aThe KoTH &b" + name + " &ahas been Started!"));
         } else {
-            player.sendMessage(CC.translate("&cPlease usage a valid KoTH name."));
+            player.sendMessage(ChatUtil.translate("&cPlease usage a valid KoTH name."));
         }
     }
 }

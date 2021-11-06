@@ -1,11 +1,11 @@
 package dev.panda.combofly.commands.essentials;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
@@ -19,7 +19,7 @@ public class GamemodeCommand extends BaseCommand {
         String label = command.getLabel();
         
         if (args.length < 1) {
-            player.sendMessage(CC.translate("&cUsage: /" + label + " <mode>"));
+            player.sendMessage(ChatUtil.translate("&cUsage: /" + label + " <mode>"));
             return;
         }
 
@@ -36,10 +36,10 @@ public class GamemodeCommand extends BaseCommand {
             player.setGameMode(GameMode.ADVENTURE);
         }
         else {
-            player.sendMessage(CC.translate("&cGamemode '" + args[0] + "' not found."));
+            player.sendMessage(ChatUtil.translate("&cGamemode '" + args[0] + "' not found."));
             return;
         }
-        player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("GAMEMODE.CHANGE")
+        player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("GAMEMODE.CHANGE")
                 .replace("{gamemode}", String.valueOf(player.getGameMode()))));
     }
 }

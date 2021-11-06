@@ -1,7 +1,7 @@
 package dev.panda.combofly.kit.listener;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.Time;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -32,9 +32,9 @@ public class KitListener implements Listener {
     public void onKitInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
 
-        if (event.getInventory().getTitle().equals(CC.translate("&c&lEditing Kit &7➤ &f&l" + ComboFly.get().getKitManager().getName(player))) ||
-                event.getInventory().getTitle().equals(CC.translate("&c&lSelect a Default kit")) ||
-                event.getInventory().getTitle().equals(CC.translate("&c&lEditor Kits"))) {
+        if (event.getInventory().getTitle().equals(ChatUtil.translate("&c&lEditing Kit &7➤ &f&l" + ComboFly.get().getKitManager().getName(player))) ||
+                event.getInventory().getTitle().equals(ChatUtil.translate("&c&lSelect a Default kit")) ||
+                event.getInventory().getTitle().equals(ChatUtil.translate("&c&lEditor Kits"))) {
 
             event.setCancelled(true);
 
@@ -55,8 +55,8 @@ public class KitListener implements Listener {
             }
             else if (ComboFly.get().getMenuKitManager().getCooldown(kit).isSimilar(is)) {
                 player.closeInventory();
-                player.sendMessage(CC.translate("&8[&c&l!&8] &7Enter &acooldown &7duration to kit &a" + kit + " &7or type: &ccancel"));
-                player.sendMessage(CC.translate("&8[&c&l!&8] &7Usage for example: &a45m 30s"));
+                player.sendMessage(ChatUtil.translate("&8[&c&l!&8] &7Enter &acooldown &7duration to kit &a" + kit + " &7or type: &ccancel"));
+                player.sendMessage(ChatUtil.translate("&8[&c&l!&8] &7Usage for example: &a45m 30s"));
                 this.cooldownEdit.add(player.getName());
             }
             else if (ComboFly.get().getMenuKitManager().getGoEditor().isSimilar(is)) {
@@ -65,7 +65,7 @@ public class KitListener implements Listener {
             else if (ComboFly.get().getMenuKitManager().getSaveInv().isSimilar(is)) {
                 ComboFly.get().getKitManager().setItems(kit, player);
                 player.closeInventory();
-                player.sendMessage(CC.translate("&aSuccessfully! &7save Inventory for the &c" + kit + " &7kit."));
+                player.sendMessage(ChatUtil.translate("&aSuccessfully! &7save Inventory for the &c" + kit + " &7kit."));
             }
             else if (ComboFly.get().getMenuKitManager().getDefaultKit().isSimilar(is)) {
                 ComboFly.get().getInventoryManager().getKitDefault(player);
@@ -81,7 +81,7 @@ public class KitListener implements Listener {
                 else if (ComboFly.get().getMenuKitManager().getKitsDefault(key).isSimilar(is)) {
                     ComboFly.get().getKitManager().setDefaultKit(key);
                     player.closeInventory();
-                    player.sendMessage(CC.translate("&aSuccesfully! &7kit &a" + key + " &7is now &6default &7kit"));
+                    player.sendMessage(ChatUtil.translate("&aSuccesfully! &7kit &a" + key + " &7is now &6default &7kit"));
                 }
             }
         }
@@ -90,7 +90,7 @@ public class KitListener implements Listener {
     @EventHandler
     public void signColor(SignChangeEvent event) {
         String[] lines = event.getLines();
-        for (int n = 0; n <= 3; n++) event.setLine(n, CC.translate(lines[n]));
+        for (int n = 0; n <= 3; n++) event.setLine(n, ChatUtil.translate(lines[n]));
     }
 
     @EventHandler
@@ -107,7 +107,7 @@ public class KitListener implements Listener {
                     for (String kit : ComboFly.get().getKitConfig().getConfiguration().getConfigurationSection("KITS").getKeys(false)) {
                         if (line2.contains(kit)) {
                             if (ComboFly.get().getKitManager().hasCooldown(kit, player)) {
-                                player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("KIT.COOLDOWN")
+                                player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("KIT.COOLDOWN")
                                         .replace("{kit}", kit)
                                         .replace("{cooldown}", String.valueOf(ComboFly.get().getKitManager().getCooldown(kit, player)))));
                                 return;
@@ -132,7 +132,7 @@ public class KitListener implements Listener {
             if (message.equalsIgnoreCase("cancel")) {
                 this.cooldownEdit.remove(player.getName());
                 ComboFly.get().getInventoryManager().getEditKit(player, kitName);
-                player.sendMessage(CC.translate("&cYour cooldown edit has been cancelled."));
+                player.sendMessage(ChatUtil.translate("&cYour cooldown edit has been cancelled."));
                 return;
             }
 
@@ -140,7 +140,7 @@ public class KitListener implements Listener {
             this.cooldownEdit.remove(player.getName());
             ComboFly.get().getKitManager().setDelayKit(kitName, delay);
             ComboFly.get().getInventoryManager().getEditKit(player, kitName);
-            player.sendMessage(CC.translate("&aSuccessfully! &7set &a" + Time.formatDuration(delay * 1000L) + " &7cooldown of &c" + kitName + " &7Kit."));
+            player.sendMessage(ChatUtil.translate("&aSuccessfully! &7set &a" + Time.formatDuration(delay * 1000L) + " &7cooldown of &c" + kitName + " &7Kit."));
         }
     }
 }

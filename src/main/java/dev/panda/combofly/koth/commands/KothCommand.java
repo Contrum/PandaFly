@@ -1,10 +1,10 @@
 package dev.panda.combofly.koth.commands;
 
 import dev.panda.combofly.koth.commands.subcommands.*;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.entity.Player;
 
 public class KothCommand extends BaseCommand {
@@ -28,7 +28,7 @@ public class KothCommand extends BaseCommand {
         Player player = commandArgs.getPlayer();
         String label = commandArgs.getLabel();
 
-        String[] messages = new String[]{CC.LINE,
+        String[] messages = new String[]{ChatUtil.NORMAL_LINE,
             "&4&lKoTH &4Commands",
             "",
             " &7- &c" + label + " show (name)",
@@ -39,10 +39,10 @@ public class KothCommand extends BaseCommand {
             " &7- &c" + label + " list",
             " &7- &c" + label + " start (name)",
             " &7- &c" + label + " stop (name)",
-            CC.LINE};
+            ChatUtil.NORMAL_LINE};
 
         for (String message : messages) {
-            player.sendMessage(CC.translate(message));
+            player.sendMessage(ChatUtil.translate(message));
         }
     }
 }

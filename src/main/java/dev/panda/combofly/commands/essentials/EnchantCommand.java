@@ -1,10 +1,10 @@
 package dev.panda.combofly.commands.essentials;
 
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.Ints;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -20,32 +20,32 @@ public class EnchantCommand extends BaseCommand {
         String label = command.getLabel();
         
         if (args.length < 2) {
-            player.sendMessage(CC.translate("&cUsage: /" +  label + " <enchantment> <level>"));
+            player.sendMessage(ChatUtil.translate("&cUsage: /" +  label + " <enchantment> <level>"));
             return;
         }
 
         ItemStack item = player.getItemInHand();
 
         if (item == null || item.getType() == Material.AIR) {
-            player.sendMessage(CC.translate("&cYou need hold an item."));
+            player.sendMessage(ChatUtil.translate("&cYou need hold an item."));
             return;
         }
 
         Enchantment enchantment = Enchantment.getByName(enchantments(args[0]));
         if (enchantment == null) {
-            player.sendMessage(CC.translate("&cEnchantment no valid."));
+            player.sendMessage(ChatUtil.translate("&cEnchantment no valid."));
             return;
         }
 
         Integer level = Ints.tryParse(args[1]);
 
         if (level == null) {
-            player.sendMessage(CC.translate("&cAmount must be a number."));
+            player.sendMessage(ChatUtil.translate("&cAmount must be a number."));
             return;
         }
 
         if (level < 0) {
-            player.sendMessage(CC.translate("&cAmount must be positive."));
+            player.sendMessage(ChatUtil.translate("&cAmount must be positive."));
             return;
         }
 
@@ -53,14 +53,14 @@ public class EnchantCommand extends BaseCommand {
 
             if(item.containsEnchantment(enchantment)) {
                 item.removeEnchantment(enchantment);
-                player.sendMessage(CC.translate("&aYou have removed the enchantment " + enchantment + "."));
+                player.sendMessage(ChatUtil.translate("&aYou have removed the enchantment " + enchantment + "."));
             }
             else {
-                player.sendMessage(CC.translate("&cThis item does not have this enchantment."));
+                player.sendMessage(ChatUtil.translate("&cThis item does not have this enchantment."));
             }
         } else {
             item.addUnsafeEnchantment(enchantment, level);
-            player.sendMessage(CC.translate("&aEnchanted item with " + enchantment.getName() + " " + level + "."));
+            player.sendMessage(ChatUtil.translate("&aEnchanted item with " + enchantment.getName() + " " + level + "."));
         }
     }
 

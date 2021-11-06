@@ -1,11 +1,11 @@
 package dev.panda.combofly.koth.commands.subcommands;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
-import dev.risas.panda.command.BaseCommand;
-import dev.risas.panda.command.Command;
-import dev.risas.panda.command.CommandArgs;
-import dev.risas.panda.files.FileConfig;
+import dev.panda.chat.ChatUtil;
+import dev.panda.command.BaseCommand;
+import dev.panda.command.Command;
+import dev.panda.command.CommandArgs;
+import dev.panda.file.FileConfig;
 import org.bukkit.command.CommandSender;
 
 public class ListCommand extends BaseCommand {
@@ -16,13 +16,13 @@ public class ListCommand extends BaseCommand {
         CommandSender sender = commandArgs.getSender();
         FileConfig config = ComboFly.get().getKothsConfig();
 
-        sender.sendMessage(CC.CHAT_BAR);
-        sender.sendMessage(CC.translate("&4&lKoTH List"));
+        sender.sendMessage(ChatUtil.NORMAL_LINE);
+        sender.sendMessage(ChatUtil.translate("&4&lKoTH List"));
         sender.sendMessage("");
-        config.getConfiguration().getConfigurationSection("KOTHS").getKeys(false).forEach(s -> {
-            boolean enabled = config.getBoolean("KOTHS." + s + ".enabled");
-            sender.sendMessage(CC.translate(" &7- " + (enabled ? CC.GREEN : CC.RED) + s));
+        config.getConfiguration().getConfigurationSection("KOTHS").getKeys(false).forEach(koth -> {
+            boolean enabled = config.getBoolean("KOTHS." + koth + ".enabled");
+            sender.sendMessage(ChatUtil.translate(" &7- " + (enabled ? "&a" : "&c") + koth));
         });
-        sender.sendMessage(CC.CHAT_BAR);
+        sender.sendMessage(ChatUtil.NORMAL_LINE);
     }
 }

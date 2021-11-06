@@ -1,7 +1,7 @@
 package dev.panda.combofly.managers;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
@@ -116,7 +116,7 @@ public class SpawnManager {
                 ComboFly.get().getSpawnManager().removeCooldown(player);
                 player.playSound(player.getLocation(), Sound.ENDERMAN_TELEPORT, 10F, 0.2F);
                 player.teleport(ComboFly.get().getSpawnManager().getSpawnLocation());
-                player.sendMessage(CC.translate(ComboFly.get().getMessageConfig().getString("SPAWN.TELEPORTED")));
+                player.sendMessage(ChatUtil.translate(ComboFly.get().getMessageConfig().getString("SPAWN.TELEPORTED")));
             }
         }
     }

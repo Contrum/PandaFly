@@ -2,7 +2,7 @@ package dev.panda.combofly.listeners;
 
 import com.sk89q.worldedit.bukkit.selections.CuboidSelection;
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.CC;
+import dev.panda.chat.ChatUtil;
 import org.bukkit.Material;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -49,7 +49,7 @@ public class ClaimListener implements Listener {
                 if (ComboFly.get().getCombatManager().hasCooldown(player)) {
                     player.setVelocity(player.getWorld().getSpawnLocation().toVector().subtract(player.getLocation().toVector()).normalize().multiply(-1));
                 }
-                player.sendMessage(CC.translate("&eNow entering: &c" + (ComboFly.get().getClaimManager().isPvPClaim(claim) ? claim : ("&a" + claim))));
+                player.sendMessage(ChatUtil.translate("&eNow entering: &c" + (ComboFly.get().getClaimManager().isPvPClaim(claim) ? claim : ("&a" + claim))));
             }
             else {
                 if (!selection.contains(from) || selection.contains(to)) {
@@ -58,7 +58,7 @@ public class ClaimListener implements Listener {
                 if (ComboFly.get().getCombatManager().hasCooldown(player)) {
                     player.setVelocity(player.getWorld().getSpawnLocation().toVector().subtract(player.getLocation().toVector()).normalize().multiply(-1));
                 }
-                player.sendMessage(CC.translate("&eNow leaving: &c" + (ComboFly.get().getClaimManager().isPvPClaim(claim) ? claim : ("&a" + claim))));
+                player.sendMessage(ChatUtil.translate("&eNow leaving: &c" + (ComboFly.get().getClaimManager().isPvPClaim(claim) ? claim : ("&a" + claim))));
             }
         }
     }
@@ -114,7 +114,7 @@ public class ClaimListener implements Listener {
                     ComboFly.get().getEnderpearlManager().removeCooldown(player);
                     player.getInventory().addItem(new ItemStack(Material.ENDER_PEARL, 1));
                     player.updateInventory();
-                    player.sendMessage(CC.translate("&cYou can not use &lEnderpearl &cthere."));
+                    player.sendMessage(ChatUtil.translate("&cYou can not use &lEnderpearl &cthere."));
                     return;
                 }
             }
