@@ -40,7 +40,6 @@ import dev.panda.combofly.utilities.scoreboard.Assemble;
 import dev.panda.combofly.utilities.scoreboard.AssembleStyle;
 import dev.panda.command.CommandManager;
 import dev.panda.file.FileConfig;
-import dev.panda.license.License;
 import dev.panda.rank.RankManager;
 import dev.panda.utilities.Server;
 import lombok.Getter;
@@ -83,40 +82,31 @@ public class ComboFly extends JavaPlugin {
 
 	public void onEnable() {
 		loadConfigs();
+		loadManagers();
+		loadEvents();
+		loadCommands();
 
-		License license = new License(ComboFly.get().getMainConfig().getString("LICENSE"), Server.getIP() + ":" + getServer().getPort(), this);
-		license.check();
+		getRankManager().loadRank();
 
-		if (license.isValid()) {
-			license.correct();
+		setupScoreboard();
+		setupEconomy();
+		onlineDonors();
 
-			loadManagers();
-			loadEvents();
-			loadCommands();
-
-			getRankManager().loadRank();
-
-			setupScoreboard();
-			setupEconomy();
-			onlineDonors();
-
-			if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-				new PlaceholderAPI(this).register();
-			}
-
-			pandaAbility = getServer().getPluginManager().getPlugin("PandaAbility") != null;
-
-			Bukkit.getConsoleSender().sendMessage(ChatUtil.translate("&aLoading plugin..."));
-			Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(ChatUtil.NORMAL_LINE));
-			Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(" "));
-			Bukkit.getConsoleSender().sendMessage(ChatUtil.translate("     &4\u2764 &c&l" + Description.getName() + " &4\u2764"));
-			Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(""));
-			Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(" &7\u27A5 &cAuthor&7: &f" + Description.getAuthors()).replace("[", "").replace("]", ""));
-			Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(" &7\u27A5 &cVersion&7: &f" + Description.getVersion()));
-			Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(" &7\u27A5 &cRank System&7: &f" + getRankManager().getRankSystem()));
-			Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(ChatUtil.NORMAL_LINE));
+		if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+			new PlaceholderAPI(this).register();
 		}
-		else license.wrong();
+
+		pandaAbility = getServer().getPluginManager().getPlugin("PandaAbility") != null;
+
+		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate("&aLoading plugin..."));
+		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(ChatUtil.NORMAL_LINE));
+		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(" "));
+		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate("     &4\u2764 &c&l" + Description.getName() + " &4\u2764"));
+		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(""));
+		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(" &7\u27A5 &cAuthor&7: &f" + Description.getAuthors()).replace("[", "").replace("]", ""));
+		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(" &7\u27A5 &cVersion&7: &f" + Description.getVersion()));
+		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(" &7\u27A5 &cRank System&7: &f" + getRankManager().getRankSystem()));
+		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(ChatUtil.NORMAL_LINE));
 	}
 
 	public void onDisable() {
