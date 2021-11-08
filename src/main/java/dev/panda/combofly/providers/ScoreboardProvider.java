@@ -1,14 +1,13 @@
 package dev.panda.combofly.providers;
 
-import dev.panda.ability.AbilityAPI;
+import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.koth.KoTH;
 import dev.panda.combofly.profile.Profile;
 import dev.panda.combofly.utilities.Animation;
-import dev.panda.chat.ChatUtil;
 import dev.panda.combofly.utilities.Utils;
+import dev.panda.combofly.utilities.hooks.PandaAbilityHook;
 import dev.panda.combofly.utilities.scoreboard.AssembleAdapter;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -35,27 +34,23 @@ public class ScoreboardProvider implements AssembleAdapter {
                     ComboFly.get().getScoreboardConfig().getStringList("VARIABLES.STAFFMODE").forEach(staffLines ->
                             lines.add(staffLines
                                 .replace("{vanish}", ComboFly.get().getVanishManager().isVanish(player) ? "&a\u2714" : "&c\u2716")
-                                .replace("{online}", String.valueOf(Utils.getPlayersAmount()))
-                                .replace("{tps}", String.valueOf(Math.round(Bukkit.getServer().spigot().getTPS()[0] * 100.0) / 100.0))));
+                                .replace("{online}", String.valueOf(Utils.getPlayersAmount()))));
                 }
                 continue;
             }
 
             if (key.contains("{pandaAbility}")) {
-                if (ComboFly.get().isPandaAbility()) {
-                    AbilityAPI abilityAPI = new AbilityAPI();
-                    if (abilityAPI.getGlobalCooldown().hasGlobalCooldown(player)) {
+                if (PandaAbilityHook.isPandaAbility()) {
+                    if (PandaAbilityHook.getPandaAbilityAPI().getGlobalCooldown().hasGlobalCooldown(player)) {
                         lines.add(ComboFly.get().getScoreboardConfig().getString("PANDAABILITY.GLOBAL-COOLDOWN")
-                                .replace("%name%", abilityAPI.getGlobalCooldown().getGlobalCooldownName())
-                                .replace("%cooldown%", abilityAPI.getGlobalCooldown().getGlobalCooldown(player)));
+                                .replace("%name%", PandaAbilityHook.getPandaAbilityAPI().getGlobalCooldown().getGlobalCooldownName())
+                                .replace("%cooldown%", PandaAbilityHook.getPandaAbilityAPI().getGlobalCooldown().getGlobalCooldown(player)));
                     }
 
-                    abilityAPI.getActiveAbility(player).forEach(abilityHandler -> {
-                        String ability = abilityHandler.getName();
-                        String cooldown = abilityHandler.getCooldown(player);
-
+                    PandaAbilityHook.getPandaAbilityAPI().getActiveAbility(player).forEach(ability -> {
                         lines.add(ComboFly.get().getScoreboardConfig().getString("PANDAABILITY.COOLDOWNS")
-                                .replace("%name%", ability).replace("%cooldown%", cooldown));
+                                .replace("%name%", ability.getName())
+                                .replace("%cooldown%", ability.getCooldown(player)));
                     });
                 }
                 continue;

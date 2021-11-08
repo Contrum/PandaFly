@@ -38,7 +38,6 @@ VARIABLES:
     - "&4&lStaffMode"
     - "&fVanish&7: &c{vanish}"
     - "&fOnline&7: &c{online}"
-    - "&fTPS&7: &c{tps}"
     - "&7&m---------------------"
 
 PANDAABILITY:
