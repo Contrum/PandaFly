@@ -13,7 +13,7 @@ import org.bukkit.util.Vector;
 public class KnockBackListener implements Listener {
 
     private final ComboFly plugin = ComboFly.get();
-    private final boolean maxheight = plugin.getMainConfig().getBoolean("KNOCKBACK.ENABLE-MAXHEIGHT");
+    private final boolean maxHeight = plugin.getMainConfig().getBoolean("KNOCKBACK.ENABLE-MAXHEIGHT");
 
     public KnockBackListener() {
         Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
@@ -48,8 +48,9 @@ public class KnockBackListener implements Listener {
                 double highestKB = attacked.getLocation().getBlockY() - attacker.getLocation().getBlockY();
                 double heightKB = plugin.getKbManager().getHeightKB();
                 Vector dir2 = attacker.getLocation().getDirection();
+
                 ComboFly.get().getServer().getScheduler().runTaskLaterAsynchronously(ComboFly.get(), () -> {
-                    if (maxheight) {
+                    if (maxHeight) {
                         if (highestKB == heightKB) {
                             Vector vec2 = new Vector(dir2.getX() * vecX, 0, dir2.getZ() * vecZ);
                             attacked.setVelocity(vec2);

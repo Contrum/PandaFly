@@ -1,6 +1,7 @@
 package dev.panda.combofly;
 
 import dev.panda.chat.ChatUtil;
+import dev.panda.combofly.balance.Balance;
 import dev.panda.combofly.commands.PandaFlyCommand;
 import dev.panda.combofly.commands.essentials.*;
 import dev.panda.combofly.commands.network.*;
@@ -31,17 +32,16 @@ import dev.panda.combofly.profile.commands.leaderboard.LeaderboardCommand;
 import dev.panda.combofly.providers.ScoreboardProvider;
 import dev.panda.combofly.utilities.Animation;
 import dev.panda.combofly.utilities.Description;
-import dev.panda.combofly.utilities.balance.Balance;
-import dev.panda.combofly.utilities.balance.impl.Normal;
-import dev.panda.combofly.utilities.balance.impl.Vault;
+import dev.panda.combofly.balance.impl.Normal;
+import dev.panda.combofly.balance.impl.Vault;
+import dev.panda.combofly.utilities.hooks.PandaAbilityHook;
+import dev.panda.combofly.utilities.hooks.PlaceholderAPIHook;
 import dev.panda.combofly.utilities.menu.ButtonListener;
-import dev.panda.combofly.utilities.placeholder.PlaceholderAPI;
 import dev.panda.combofly.utilities.scoreboard.Assemble;
 import dev.panda.combofly.utilities.scoreboard.AssembleStyle;
 import dev.panda.command.CommandManager;
 import dev.panda.file.FileConfig;
 import dev.panda.rank.RankManager;
-import dev.panda.utilities.Server;
 import lombok.Getter;
 import lombok.Setter;
 import net.milkbowl.vault.chat.Chat;
@@ -78,7 +78,6 @@ public class ComboFly extends JavaPlugin {
 	private Chat chat;
 	private Economy econ;
 	private Balance balanceType;
-	private boolean pandaAbility = false;
 
 	public void onEnable() {
 		loadConfigs();
@@ -92,21 +91,22 @@ public class ComboFly extends JavaPlugin {
 		setupEconomy();
 		onlineDonors();
 
+		if (Bukkit.getPluginManager().getPlugin("PandaAbility") != null) {
+			PandaAbilityHook.init();
+		}
 		if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-			new PlaceholderAPI(this).register();
+			new PlaceholderAPIHook(this).register();
 		}
 
-		pandaAbility = getServer().getPluginManager().getPlugin("PandaAbility") != null;
-
-		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate("&aLoading plugin..."));
-		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(ChatUtil.NORMAL_LINE));
-		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(" "));
-		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate("     &4\u2764 &c&l" + Description.getName() + " &4\u2764"));
-		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(""));
-		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(" &7\u27A5 &cAuthor&7: &f" + Description.getAuthors()).replace("[", "").replace("]", ""));
-		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(" &7\u27A5 &cVersion&7: &f" + Description.getVersion()));
-		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(" &7\u27A5 &cRank System&7: &f" + getRankManager().getRankSystem()));
-		Bukkit.getConsoleSender().sendMessage(ChatUtil.translate(ChatUtil.NORMAL_LINE));
+		ChatUtil.log("&aLoading plugin...");
+		ChatUtil.log(ChatUtil.NORMAL_LINE);
+		ChatUtil.log(" ");
+		ChatUtil.log("     &4\u2764 &c&l" + Description.getName() + " &4\u2764");
+		ChatUtil.log("");
+		ChatUtil.log(" &7\u27A5 &cAuthor&7: &f" + Description.getAuthors());
+		ChatUtil.log(" &7\u27A5 &cVersion&7: &f" + Description.getVersion());
+		ChatUtil.log(" &7\u27A5 &cRank System&7: &f" + this.getRankManager().getRankSystem());
+		ChatUtil.log(ChatUtil.NORMAL_LINE);
 	}
 
 	public void onDisable() {
@@ -156,6 +156,7 @@ public class ComboFly extends JavaPlugin {
 		new KothCommand();
 		new HostCommand();
 		new LeaderboardCommand();
+
 		if (ComboFly.get().getStaffManager().isStaffEnable()) {
 			new FreezeCommand();
 			new StaffModeCommand();
@@ -198,6 +199,7 @@ public class ComboFly extends JavaPlugin {
 		this.claimManager = new ClaimManager();
 		this.spawnManager = new SpawnManager();
 		this.menuKitManager = new MenuKitManager();
+
 		Animation.init();
 		Profile.init();
 		KoTH.init();

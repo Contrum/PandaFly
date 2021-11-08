@@ -1,4 +1,4 @@
-package dev.panda.combofly.utilities.balance;
+package dev.panda.combofly.balance;
 
 import org.bukkit.entity.Player;
 

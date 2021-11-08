@@ -1,7 +1,7 @@
-package dev.panda.combofly.utilities.balance.impl;
+package dev.panda.combofly.balance.impl;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.combofly.utilities.balance.Balance;
+import dev.panda.combofly.balance.Balance;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.entity.Player;
 
