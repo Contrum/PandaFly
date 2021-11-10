@@ -2,7 +2,7 @@ package dev.panda.combofly.listeners;
 
 import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.profile.Profile;
-import dev.panda.chat.ChatUtil;
+import dev.panda.lib.chat.ChatUtil;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

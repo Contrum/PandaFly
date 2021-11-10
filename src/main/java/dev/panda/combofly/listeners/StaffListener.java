@@ -1,7 +1,7 @@
 package dev.panda.combofly.listeners;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.chat.ChatUtil;
+import dev.panda.lib.chat.ChatUtil;
 import dev.panda.combofly.utilities.staff.StaffItems;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

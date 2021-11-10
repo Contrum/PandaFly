@@ -2,7 +2,7 @@ package dev.panda.combofly.listeners;
 
 import com.sk89q.worldedit.bukkit.selections.CuboidSelection;
 import dev.panda.combofly.ComboFly;
-import dev.panda.chat.ChatUtil;
+import dev.panda.lib.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

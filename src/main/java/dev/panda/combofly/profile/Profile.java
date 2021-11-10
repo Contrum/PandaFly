@@ -1,12 +1,11 @@
 package dev.panda.combofly.profile;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.profile.comparator.ProfileDeathsComparator;
 import dev.panda.combofly.profile.comparator.ProfileKillsComparator;
 import dev.panda.combofly.profile.entry.KDEntry;
-import dev.panda.file.FileConfig;
+import dev.panda.lib.file.FileConfig;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;

@@ -1,7 +1,7 @@
 package dev.panda.combofly.kit.listener;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.chat.ChatUtil;
+import dev.panda.lib.chat.ChatUtil;
 import dev.panda.combofly.utilities.Time;
 import org.bukkit.*;
 import org.bukkit.block.Block;

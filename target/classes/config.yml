@@ -1,0 +1,132 @@
+# Type of Balance
+# [NORMAL, VAULT]
+BALANCE-TYPE: NORMAL
+
+#TICKS PER HIT
+HIT-TICKS:
+  ENABLE: true
+  TICKS: 1
+
+#KB STANDAR X = 0.18 | Y = 0.16 | Z = 0.18 | MAXHEIGHT = 1.5
+KNOCKBACK:
+  ENABLE: true
+  X: 0.18
+  Y: 0.16
+  Z: 0.18
+  ENABLE-MAXHEIGHT: true
+  MAXHEIGHT: 1.5
+
+DISCORD: "discord.pandacommunity.org"
+STORE: "store.pandacommunity.us"
+TEAMSPEAK: "ts.pandacommunity.us"
+TWITTER: "twitter.com/PandaPlugins"
+WEBSITE: "www.pandacommunity.org"
+
+STAFF:
+  ENABLE: true
+  STAFFMODE-JOIN: true
+  JOIN-MESSAGE:
+    ENABLE: true
+    MESSAGE: "&7(&bStaff&7) &b{staff} &fjoin the server."
+  QUIT-MESSAGE:
+    ENABLE: true
+    MESSAGE: "&7(&bStaff&7) &b{staff} &fleft the server."
+
+WELCOME-MESSAGE:
+  STATUS: true
+  MESSAGE:
+  - "&fWelcome &4{player} &fto &cComboFly &7[&c#{playercount}&7]"
+
+JOIN-MESSAGE:
+  STATUS: true
+  MESSAGE:
+  - "&7&m----------------------------------------------"
+  - "&fWelcome &c&l{player} &fto &4&lPanda Community"
+  - ""
+  - "&c» &fDiscord: &c{discord}"
+  - "&c» &7Store: &c{store}"
+  - "&c» &7Teamspeak: &c{teamspeak}"
+  - "&c» &7Twitter: &c{twitter}"
+  - "&c» &7Website: &c{website}"
+  - "&7&m----------------------------------------------"
+
+ONLINE-DONATORS-ANNOUNCE:
+  NO-PLAYERS: true
+  TOGGLE: true
+  MESSAGE:
+    - "&7&m---------------------------------------------"
+    - "&cOnline Donators &7» &c{donators}"
+    - ""
+    - "&7You can buy rank at &c{store}"
+    - "&7&m---------------------------------------------"
+  MESSAGE-NO-DONATORS: "&fNo online donators."
+
+NO-PERMISSION:
+  CONSOLE: "&cNo Console."
+  PLAYER: "&cNo permission."
+
+PLAYER-NOTFOUND:
+  MESSAGE: "&cPlayer '&f{argument}&c' not found."
+
+DEFAULT-MONEY: 250
+
+KOTH-REWARDS:
+  - "say Winner {winner}"
+
+KILL-MONEY:
+  ENABLE: true
+  MONEY: 100
+  KILL-MESSAGE: "&fYou earned &a${money} &ffor killing &c{target}&f."
+
+KIT-DEFAULT: ""
+
+KILL-REWARD:
+  ENABLE: true
+  REWARD:
+  - "crate givekey {player} Kill 1"
+
+DEFAULT-KIT-ON-JOIN: true
+
+KILLSTREAK:
+  COMMAND:
+    - "&7&m---------------------------------------"
+    - "&c&lKillStreak Info"
+    - ""
+    - "&c» &f3 Kills: &cRepair All."
+    - "&c» &f5 Kills: &cInvisibility Effect (3 min)."
+    - "&c» &f10 Kills: &cStrength II Effect (30 sec)."
+    - "&c» &f12 Kills: &cSpeed IV Effect (1 min)."
+    - "&c» &f15 Kills: &cRepair All."
+    - "&c» &f20 Kills: &cStrength II (3 min) & Speed IV (3 min)."
+    - "&7&m---------------------------------------"
+  MESSAGE: "&4[KillStreak] &7{player} &creached a &7{streak} &ckillstreak!."
+  #You can put any amount of killstreak, just copy and paste as you like.
+  REWARDS:
+    STREAK:
+      "3":
+        REPAIRALL: true
+        MESSAGE: "&aYour entire inventory has been repaired."
+      "5":
+        REPAIRALL: false
+        COMMANDS:
+          - effect {player} INVISIBILITY 180
+        MESSAGE: "&aYou have received invisibility for 3 minutes."
+      "10":
+        REPAIRALL: false
+        COMMANDS:
+          - effect {player} INCREASE_DAMAGE 30 1
+        MESSAGE: "&aYou have received strength II for 30 seconds."
+      "12":
+        REPAIRALL: false
+        COMMANDS:
+          - effect {player} SPEED 60 3
+        MESSAGE: "&aYou have received speed IV for 1 minute."
+      "15":
+        REPAIRALL: true
+        MESSAGE: "&aYour entire inventory has been repaired."
+      "20":
+        REPAIRALL: false
+        COMMANDS:
+          - effect {player} INCREASE_DAMAGE 180 1
+          - effect {player} SPEED 180 3
+        MESSAGE: "&aYou have received strength II & speed IV for 3 minutes."

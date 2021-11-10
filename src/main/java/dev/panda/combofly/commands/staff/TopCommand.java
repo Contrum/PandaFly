@@ -1,11 +1,11 @@
 package dev.panda.combofly.commands.staff;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.chat.ChatUtil;
+import dev.panda.lib.chat.ChatUtil;
 import dev.panda.combofly.utilities.Utils;
-import dev.panda.command.BaseCommand;
-import dev.panda.command.Command;
-import dev.panda.command.CommandArgs;
+import dev.panda.lib.command.BaseCommand;
+import dev.panda.lib.command.Command;
+import dev.panda.lib.command.CommandArgs;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;

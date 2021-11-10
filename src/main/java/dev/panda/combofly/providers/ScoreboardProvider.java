@@ -1,6 +1,6 @@
 package dev.panda.combofly.providers;
 
-import dev.panda.chat.ChatUtil;
+import dev.panda.lib.chat.ChatUtil;
 import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.koth.KoTH;
 import dev.panda.combofly.profile.Profile;

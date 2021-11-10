@@ -3,7 +3,7 @@ package dev.panda.combofly.koth;
 import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.koth.event.EnterCuboidEvent;
 import dev.panda.combofly.koth.event.LeaveCuboidEvent;
-import dev.panda.chat.ChatUtil;
+import dev.panda.lib.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;

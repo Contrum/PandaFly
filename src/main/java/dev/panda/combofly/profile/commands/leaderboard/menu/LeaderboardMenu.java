@@ -2,11 +2,11 @@ package dev.panda.combofly.profile.commands.leaderboard.menu;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import dev.panda.chat.ChatUtil;
+import dev.panda.lib.chat.ChatUtil;
 import dev.panda.combofly.profile.Profile;
 import dev.panda.combofly.utilities.menu.Button;
 import dev.panda.combofly.utilities.menu.Menu;
-import dev.panda.item.ItemBuilder;
+import dev.panda.lib.item.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

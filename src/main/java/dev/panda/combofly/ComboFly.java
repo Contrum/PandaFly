@@ -1,6 +1,6 @@
 package dev.panda.combofly;
 
-import dev.panda.chat.ChatUtil;
+import dev.panda.lib.chat.ChatUtil;
 import dev.panda.combofly.balance.Balance;
 import dev.panda.combofly.commands.PandaFlyCommand;
 import dev.panda.combofly.commands.essentials.*;
@@ -39,9 +39,9 @@ import dev.panda.combofly.utilities.hooks.PlaceholderAPIHook;
 import dev.panda.combofly.utilities.menu.ButtonListener;
 import dev.panda.combofly.utilities.scoreboard.Assemble;
 import dev.panda.combofly.utilities.scoreboard.AssembleStyle;
-import dev.panda.command.CommandManager;
-import dev.panda.file.FileConfig;
-import dev.panda.rank.RankManager;
+import dev.panda.lib.command.CommandManager;
+import dev.panda.lib.file.FileConfig;
+import dev.panda.lib.rank.RankManager;
 import lombok.Getter;
 import lombok.Setter;
 import net.milkbowl.vault.chat.Chat;

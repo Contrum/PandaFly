@@ -1,0 +1,5 @@
+main: dev.panda.combofly.ComboFly
+name: PandaFly
+version: 1.0.0-FREE
+authors: ["KenAlesk", "TulioTriste", "Risas"]
+load: POSTWORLD

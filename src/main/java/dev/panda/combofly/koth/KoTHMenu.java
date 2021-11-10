@@ -3,7 +3,7 @@ package dev.panda.combofly.koth;
 import com.google.common.collect.Maps;
 import dev.panda.combofly.utilities.menu.Button;
 import dev.panda.combofly.utilities.menu.Menu;
-import dev.panda.item.ItemBuilder;
+import dev.panda.lib.item.ItemBuilder;
 import lombok.AllArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

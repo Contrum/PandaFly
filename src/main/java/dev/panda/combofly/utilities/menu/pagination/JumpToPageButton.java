@@ -1,8 +1,8 @@
 package dev.panda.combofly.utilities.menu.pagination;
 
-import dev.panda.chat.ChatUtil;
+import dev.panda.lib.chat.ChatUtil;
 import dev.panda.combofly.utilities.menu.Button;
-import dev.panda.item.ItemBuilder;
+import dev.panda.lib.item.ItemBuilder;
 import lombok.AllArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

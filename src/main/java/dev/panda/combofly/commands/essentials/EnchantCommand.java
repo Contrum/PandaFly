@@ -1,10 +1,10 @@
 package dev.panda.combofly.commands.essentials;
 
-import dev.panda.chat.ChatUtil;
+import dev.panda.lib.chat.ChatUtil;
 import dev.panda.combofly.utilities.Ints;
-import dev.panda.command.BaseCommand;
-import dev.panda.command.Command;
-import dev.panda.command.CommandArgs;
+import dev.panda.lib.command.BaseCommand;
+import dev.panda.lib.command.Command;
+import dev.panda.lib.command.CommandArgs;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;

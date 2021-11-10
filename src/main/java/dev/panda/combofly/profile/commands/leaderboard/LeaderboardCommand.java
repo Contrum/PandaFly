@@ -1,9 +1,9 @@
 package dev.panda.combofly.profile.commands.leaderboard;
 
 import dev.panda.combofly.profile.commands.leaderboard.menu.LeaderboardMenu;
-import dev.panda.command.BaseCommand;
-import dev.panda.command.Command;
-import dev.panda.command.CommandArgs;
+import dev.panda.lib.command.BaseCommand;
+import dev.panda.lib.command.Command;
+import dev.panda.lib.command.CommandArgs;
 import org.bukkit.entity.Player;
 
 public class LeaderboardCommand extends BaseCommand {

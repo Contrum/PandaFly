@@ -1,11 +1,11 @@
 package dev.panda.combofly.koth.commands.subcommands;
 
 import dev.panda.combofly.ComboFly;
-import dev.panda.chat.ChatUtil;
-import dev.panda.command.BaseCommand;
-import dev.panda.command.Command;
-import dev.panda.command.CommandArgs;
-import dev.panda.file.FileConfig;
+import dev.panda.lib.chat.ChatUtil;
+import dev.panda.lib.command.BaseCommand;
+import dev.panda.lib.command.Command;
+import dev.panda.lib.command.CommandArgs;
+import dev.panda.lib.file.FileConfig;
 import org.bukkit.command.CommandSender;
 
 public class ListCommand extends BaseCommand {

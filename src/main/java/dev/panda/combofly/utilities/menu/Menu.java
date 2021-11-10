@@ -1,7 +1,7 @@
 package dev.panda.combofly.utilities.menu;
 
-import dev.panda.chat.ChatUtil;
-import dev.panda.item.ItemBuilder;
+import dev.panda.lib.chat.ChatUtil;
+import dev.panda.lib.item.ItemBuilder;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;

@@ -1,6 +1,6 @@
 package dev.panda.combofly.utilities.menu;
 
-import dev.panda.item.ItemBuilder;
+import dev.panda.lib.item.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

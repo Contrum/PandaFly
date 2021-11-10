@@ -2,7 +2,7 @@ package dev.panda.combofly.koth.task;
 
 import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.koth.KoTH;
-import dev.panda.chat.ChatUtil;
+import dev.panda.lib.chat.ChatUtil;
 import lombok.AllArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

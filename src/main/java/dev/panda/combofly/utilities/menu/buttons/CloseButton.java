@@ -1,7 +1,7 @@
 package dev.panda.combofly.utilities.menu.buttons;
 
 import dev.panda.combofly.utilities.menu.Button;
-import dev.panda.item.ItemBuilder;
+import dev.panda.lib.item.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;

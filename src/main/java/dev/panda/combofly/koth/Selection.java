@@ -2,7 +2,7 @@ package dev.panda.combofly.koth;
 
 import dev.panda.combofly.ComboFly;
 import dev.panda.combofly.koth.cuboid.Cuboid;
-import dev.panda.item.ItemBuilder;
+import dev.panda.lib.item.ItemBuilder;
 import lombok.Data;
 import org.bukkit.Location;
 import org.bukkit.Material;
